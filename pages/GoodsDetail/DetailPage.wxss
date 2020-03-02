@@ -637,5 +637,7 @@ border-top: 1rpx solid #f2f2f2;
 padding-top: 30rpx;
 font-size: 34rpx;
 color: #333;
+float: left;
+width: 100%;
 
 }
