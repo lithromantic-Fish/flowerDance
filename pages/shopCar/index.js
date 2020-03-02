@@ -75,14 +75,20 @@ Page({
     })
   },
 
-  getCartCount({ currentTarget: { dataset: { index } }, detail }) {
-    this.data.cartList[index].total = detail;
+  // 改变购物车数量的input
+  getSelectNum({ currentTarget: { dataset: { index } }, detail }) {
+    console.log('deta',detail)
+    // this.data.cartList[index].total = detail;
 
-    this.setData({
-      cartList: this.data.cartList
-    })
+    // this.setData({
+    //   cartList: this.data.cartList
+    // })
   },
+
+
+
   gotoProductDetail({ currentTarget: { dataset: { index } } }) {
+    console.log('22222222222')
     wx.navigateTo({
       url: `/pages/productdetail/productdetail?id=${this.data.cartList[index].id}`,
     })
@@ -147,7 +153,7 @@ Page({
 
     let totalMoney = Number(this.data.totalMoney),
       cartList = this.data.cartList;
-
+      cartList[index].num++
     if (cartList[index].select) {
       totalMoney += Number(cartList[index].price);
     }
@@ -162,6 +168,7 @@ Page({
 
     let totalMoney = Number(this.data.totalMoney),
       cartList = this.data.cartList;
+    cartList[index].num--
 
     if (cartList[index].select) {
       totalMoney -= Number(cartList[index].price);
@@ -231,25 +238,46 @@ Page({
   */
   del: function (e) {
     var index = e.currentTarget.dataset.index
+    var id = e.currentTarget.dataset.id
     var self = this
+    var parm = {
+      cart_ids: id,
+      "uid": app.globalData.uId || wx.getStorageSync('uId')
 
-    // 删除storage
-    wx.getStorage({
-      key: 'cartInfo',
-      success: function (res) {
-        const partData = res.data
-        partData.forEach((cart, i) => {
-          if (cart.title == self.data.cartList[index].title) {
-            partData.splice(i, 1)
-          }
-        })
-        wx.setStorage({
-          key: 'cartInfo',
-          data: partData
-        })
-        self.update(index)
+    }
+    wx.request({
+      url: app.globalData.url+ '/mobile/index.php?m=flowerapi&c=order&a=cartdel',
+      data:parm,
+      success:function(res){
+        if(res.data.code==200){
+          console.log('res',res)
+          self.update(index)
+        }else{
+          wx.showToast({
+            title: res.data.msg,
+            icon:'none'
+          })
+        }
       }
     })
+    
+    // 删除storage
+    // wx.getStorage({
+    //   key: 'cartInfo',
+    //   success: function (res) {
+    //     const partData = res.data
+    //     partData.forEach((cart, i) => {
+    //       if (cart.title == self.data.cartList[index].title) {
+    //         partData.splice(i, 1)
+    //       }
+    //     })
+    //     wx.setStorage({
+    //       key: 'cartInfo',
+    //       data: partData
+    //     })
+    //     self.update(index)
+    //   }
+    // })
   },
   update: function (index) {
     var cartList = this.data.cartList
@@ -257,7 +285,7 @@ Page({
     let totalCount = this.data.totalCount
     // 计算价格和数量
     if (cartList[index].select) {
-      totalMoney -= Number(cartList[index].price) * cartList[index].total
+      totalMoney -= Number(cartList[index].price) * cartList[index].num
       totalCount--
     }
     // 删除
