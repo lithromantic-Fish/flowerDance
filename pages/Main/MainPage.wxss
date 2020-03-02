@@ -1,0 +1,241 @@
+::-webkit-scrollbar{
+    width: 0;
+    height: 0;
+    color: transparent;
+}
+
+.spacing-five{
+  letter-spacing:5rpx;
+}
+
+.spacing-three{
+  letter-spacing:3rpx;
+}
+
+.top-f{
+  font-weight:bold;font-size:36rpx;float:left;color:rgba(51, 51, 51, 1);
+  font-family: PingFang-SC-Bold;
+}
+
+.top-s{
+  font-size:26rpx;float:left;color:rgba(186, 186, 186, 1);font-weight: middle;
+  font-family: PingFang-SC-Bold;
+} 
+
+.top-t{
+  font-size:30rpx;margin-left: auto;font-weight: Bold;
+  color:rgba(51, 51, 51, 1);
+}
+
+.top-fo{
+  font-size:28rpx;float:right;color:#BABABA;
+}
+
+
+.index-swiper-head{
+  height:550rpx;width:100%;
+}
+.index-swiper-head image{
+   height:550rpx!important;
+}
+
+.index-second{
+  width:94%;height:210rpx;margin-top:40rpx;margin-left:3%;
+}
+
+.index-second .index-getflower{
+  height:100%;width:48%;float:left;overflow:hidden;
+}
+
+.index-flash{
+  width:100%;height:300rpx;margin-top:35rpx;
+}
+
+.flash-top{
+  width:94%;height:80rpx;display:flex;align-items: center;margin-left:3%;
+}
+
+.index-flash .flash-bottom{
+  height:200rpx;
+}
+
+.index-flash .flash-bottom .bottom-left{
+  margin-top:8rpx;height:100%;width:24%;float:left;overflow:hidden;
+}
+.index-flash .flash-bottom .bottom-left image{
+  height:200rpx;width:200rpx;
+}
+
+.index-flash .flash-bottom .bottom-middle{
+  margin-top:8rpx;height:100%;width:16%;float:left;overflow:hidden;
+}
+
+.index-flash .flash-bottom .bottom-right{
+  height:100%;width:60%;float:left;margin-top:8rpx;
+}
+
+
+.index-flash .flash-bottom .bottom-right .right-f{
+  float:right;height:30%;width:80%;background:lightgray;border-radius:5px;
+}
+
+.index-flash .flash-bottom .bottom-right .right-f .f-img{
+  float:left;height:100%;width:15%;overflow:hidden;
+}
+
+.index-flash .flash-bottom .bottom-right .right-f .f-title{
+  float:left;height:100%;width:85%;
+}
+
+.index-flash .flash-bottom .bottom-right .right-s{
+  height:30%;width:100%;float:right;
+}
+
+.index-flash .flash-bottom .bottom-right .right-s text{
+  font-size:38rpx;font-weight:bold;float:right;margin-top:15rpx;
+}
+
+.index-flash .flash-bottom .bottom-right .right-t{
+  float:right;margin-top:15rpx;width:100%;height:30%;
+}
+
+.index-flash .flash-bottom .bottom-right .right-t .t-true{
+  float:right;color:red;margin-top:8rpx;
+}
+
+.index-flash .flash-bottom .bottom-right .right-t .t-del{
+  text-decoration:line-through;float:right;color:gray;margin-top:8rpx;
+}
+
+.index-spike{
+  width:94%;height:800rpx;margin-top:50rpx;margin-left:3%;
+}
+
+.index-spike .spike-top{
+  width:100%;height:80rpx;
+}
+
+
+.index-spike .spike-bottom{
+  height:750rpx;width:100%;
+}
+
+.index-spike .spike-bottom .spike-img{
+  width:90%;height:72%;
+}
+
+.index-spike .spike-bottom .spike-text1{
+  font-weight:bold;font-size:28rpx;margin-top:10rpx;
+  font-family: PingFang-SC-Bold;width:90%;
+}
+
+.index-spike .spike-bottom .spike-text2{
+  font-size:24rpx;margin-top:10rpx;
+  width:90%;color:rgba(192, 192, 192, 1);
+}
+
+.index-spike .spike-bottom .spike-text3{
+  font-weight:bold;font-size:22rpx;margin-top:20rpx;width:90%;
+}
+
+
+.bottom-view{
+  width:44%;height:600rpx;margin-left:4%;margin-top:30rpx;
+  display: inline-block;
+}
+
+ .bottom-view .bottom-img{
+  height:65%;width:100%;
+}
+
+.bottom-view .bottom-text1{
+  display:block;font-size:28rpx;
+}
+
+.bottom-view .bottom-text2{
+  display:block;font-weight:bold;font-size:22rpx;margin-top:10rpx;
+}
+
+ .bottom-view .bottom-text3{
+  display:block;font-weight:Regular;font-size:24rpx;font-family:PingFang-SC-Regular;
+  color:#999999;
+}
+
+
+.bottom-view .bottom-text4{
+  text-decoration:line-through;color:gray;font-size:30rpx;
+}
+
+
+/* 下面为7.2号后增添的样式 */
+.index-second .index-getflower .block-get{
+  position:absolute;height:50rpx;width:150rpx;margin-top:30rpx;margin-left:20rpx;background:white;border-radius:20rpx;
+}
+
+.index-second .index-getflower .block-get text{
+ font-size:13px;color:#767676;font-weight: Medium;font-family: PingFang-SC-Medium;
+}
+
+.index-second .left-four{
+  margin-left:4%;
+}
+
+.flash-bottom .right-part{
+  height:100%;width:54%;margin-top:8rpx;float:left;
+}
+
+.flash-bottom .right-part .part-radius{
+ float:right;height:25%;width:74%;background:#F4F4F4;border-top-left-radius:20px;border-bottom-left-radius:20px;margin-top:5rpx;display:flex;align-items:center;
+}
+
+.flash-bottom .right-part .part-radius .radius-image{
+    width:31rpx;height:31rpx;margin-left:12rpx;
+}
+
+
+.flash-bottom .right-part .part-radius text{
+    font-size:24rpx;color:rgba(51, 51, 51, 1);padding-left:22rpx;font-weight: Medium;
+    font-family: PingFang-SC-Medium;
+}
+
+.flash-bottom .right-part .part-text{
+    height:30%;width:100%;float:right;
+}
+
+
+.flash-bottom .right-part  .part-text text{
+    font-size:28rpx;font-weight:bold;float:right;margin-top:37rpx;
+    color:rgba(51, 51, 51, 1);
+}
+
+.flash-bottom .right-part .part-money{
+   float:right;margin-top:10rpx;width:100%;height:30%;
+}
+
+.flash-bottom .right-part .part-money .money-right{
+   float:right;color:RGBA(255, 93, 106, 1);margin-top:22rpx;font-size:22rpx;
+   font-weight: bold;font-family: PingFang-SC-Bold;
+}
+
+.flash-bottom .right-part .part-money .money-wrong{
+   font-size:22rpx;text-decoration:line-through;float:right;color:rgba(192, 192, 192, 1);margin-top:25rpx; font-weight: bold;font-family: PingFang-SC-Bold;padding-right:20rpx;
+}
+
+/*  顶部的样式 */
+.main-top1{
+  height:76%;width:auto;font-family:MicrosoftYaHei;font-weight:Regular;color:rgba(51, 51, 51, 1);font-size:24rpx;
+}
+
+.main-top2{
+  height:76%;width:auto;font-family:MicrosoftYaHei-Bold;font-weight:Bold;color:rgba(51, 51, 51, 1);font-size:24rpx;border-bottom:6rpx solid #333333;
+}
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,36 @@
+.location-bottom{
+  width:100%;background: rgba(0, 0, 0, 0.7);position: absolute;top:0;left:0;z-index:99
+}
+
+.location-bottom .init{
+  position:absolute;left:0;bottom:0rpx;height:600rpx;background: white;width:100%;
+}
+
+.location-bottom .init .top{
+  width:100%;height:150rpx;border-bottom: 2rpx solid lightgray;position:relative;
+}
+
+.location-bottom .init .top text{
+  color:rgba(51, 51, 51, 1);font-size: 36rpx;
+}
+
+.location-bottom .init .top .top-image{
+  width:25rpx;height:25rpx;position: absolute;top:52rpx;right:52rpx;
+}
+
+.location-bottom .init .middle{
+  width:100%;height:300rpx;overflow: hidden;
+}
+
+.location-bottom .init .bottom{
+  width:100%;height:150rpx;border-top:2rpx solid lightgray;
+}
+
+.location-bottom .init .bottom .btn{
+  width:320rpx;height:72rpx;background: rgba(255, 137, 158, 1);border-radius: 36rpx;
+}
+
+.location-bottom .init .bottom .btn text{
+  color:white;font-size:32rpx;
+}
+

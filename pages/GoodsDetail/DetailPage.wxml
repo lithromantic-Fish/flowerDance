@@ -1,0 +1,258 @@
+<import src="../../wxParse/wxParse.wxml" />
+
+<view class="main-style">
+
+  <view class="top-view">
+    <swiper style="width:100%;height:100%;position:absolute" bindchange='changeEnd'>
+      <block wx:for="{{goods_gallery}}" wx:for-item="items" wx:key="{{index}}">
+        <swiper-item style="overflow:hidden">
+          <image src="{{items.img_url}}" style="width:752rpx" mode='aspectFill'></image>
+        </swiper-item>
+      </block>
+    </swiper>
+    <view class="center view-bg">
+      <text style="color:white;font-size:28rpx;">{{gallery_index}}/{{gallery_length}}</text>
+    </view>
+  </view>
+
+  <!-- 此处放置不同的页面样式，这里放置的是普通商品的数据 -->
+  <view wx:if="{{goodsType==1||goodsType==4||goodsType==5}}" class="align-middle top-money">
+    <view class="in-text">
+      <text class="text1">¥</text>
+      <text class="text2">{{bigText}}</text>
+      <text class="text3">.{{lastText}}</text>
+    </view>
+  </view>
+
+  <!-- 限时团购显示的页面 -->
+  <view wx:elif="{{goodsType==3}}" class="special">
+    <view class="spe-left align-middle">
+      <view style="height:80%;width:85%;margin-left:40rpx;margin-top:6rpx;">
+        <!--这个div用来给上下的空隙-->
+        <text style="font-size:40rpx;color:rgba(255, 255, 255, 1);">¥</text>
+        <text style="font-size:56rpx;font-weight: bold;color:rgba(255, 255, 255, 1);">{{groupBigText}}</text>
+        <text style="font-size:30rpx;font-weight: bold;color:rgba(255, 255, 255, 1);">.{{groupLastText}}</text>
+        <text style="font-size:22rpx;color:rgba(255, 197, 215, 1);margin-left:25rpx;">原价:</text>
+        <text style="font-size:22rpx;color:rgba(255, 197, 215, 1);margin-left:10rpx;text-decoration:line-through;">¥{{shop_price}}</text>
+      </view>
+    </view>
+    <view class="spe-right">
+      <view class="center right-top">
+        <text>距离结束还剩</text>
+      </view>
+      <view class="right-last">
+        <view class="center last-one" style="margin-left:7%">
+          <text style="font-size:22rpx;color:white;">{{hour}}</text>
+        </view>
+        <view class="center last-two">
+          <text>:</text>
+        </view>
+        <view class="center last-one">
+          <text style="font-size:22rpx;color:white;">{{min}}</text>
+        </view>
+        <view class="center last-two">
+          <text>:</text>
+        </view>
+        <view class="center last-one">
+          <text style="font-size:22rpx;color:white;">{{second}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 限时秒杀的页面 -->
+  <view wx:elif="{{goodsType==2}}" class="special">
+    <view class="spe-left align-middle">
+      <view style="height:80%;width:85%;margin-left:40rpx;margin-top:6rpx;">
+        <view style="width:30%;height:100%;float:left;"><!-- 左边的view -->
+          <text style="font-size:40rpx;color:rgba(255, 255, 255, 1);">¥</text>
+          <text style="font-size:56rpx;font-weight: bold;color:rgba(255, 255, 255, 1);">{{spikeBigText}}</text>
+          <text style="font-size:30rpx;font-weight: bold;color:rgba(255, 255, 255, 1);">.{{spikeLastText}}</text>
+        </view>
+        <view style="width:70%;height:88%;float:left;margin-top:4rpx"><!-- 右边的view -->
+          <!-- 右边的view又分为上下 -->
+          <view style="height:50%;width:100%;float:left;" class="align-middle">
+              <text style="font-size:22rpx;color:rgba(255, 197, 215, 1);">原价:</text>
+              <text style="font-size:22rpx;color:rgba(255, 197, 215, 1);text-decoration:line-through;">¥{{shop_price}}</text>
+          </view>
+          <view style="height:50%;width:100%;float:left" class="align-middle">
+            <text wx:if="{{haveGoods==0}}" style="color:white;font-size:22rpx;font-weight: bold;">已抢{{rob_number}}件</text>
+            <text wx:if="{{haveGoods==1}}" style="color:white;font-size:22rpx;font-weight: bold;">已抢完</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="spe-right">
+      <view class="center right-top">
+        <text>距离结束还剩</text>
+      </view>
+      <view class="right-last">
+        <view class="center last-one" style="margin-left:7%">
+          <text style="font-size:22rpx;color:white;">{{hour}}</text>
+        </view>
+        <view class="center last-two">
+          <text>:</text>
+        </view>
+        <view class="center last-one">
+          <text style="font-size:22rpx;color:white;">{{min}}</text>
+        </view>
+        <view class="center last-two">
+          <text>:</text>
+        </view>
+        <view class="center last-one">
+          <text style="font-size:22rpx;color:white;">{{second}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="tw">
+    <text class="tw-text1">{{goods_name}}</text>
+    <text class="tw-text2">{{goods_brief}}</text>
+    <button open-type="share"  class="share" bindtap="sharePage">
+      <image src="../Images/share.png"></image>
+      <text class="share-text">分享</text>
+    </button>
+  </view>
+  <view class="align-middle thr">
+    <image style="margin-left:40rpx" mode='widthFix' src="../Images/get.png"></image>
+    <text>采地直购</text>
+    <image mode='widthFix' src="../Images/protect.png"></image>
+    <text>花损赔付</text>
+    <image mode='widthFix' src="../Images/send.png"></image>
+    <text>准时送达</text>
+  </view>
+
+  <view class="align-middle four">
+    <text class="text1">购买送积分</text>
+    <text class="text2">+{{give_integral}}积分</text>
+  </view>
+
+  <view class="choose">
+    <view class="center {{choose==0?'par1':'par2'}}" bindtap='toLeft'>
+      <text>商品参数</text>
+    </view>
+    <view class="center {{choose==1?'integray2':'integray1'}}" bindtap='toRight'>
+      <text>商品评价({{comment_number}})</text>
+    </view>
+  </view>
+
+
+  <swiper style="height: {{clientHeight?clientHeight+'px':'auto'}}" current="{{currentTab}}" duration="200" bindchange="swiperchange">
+    <swiper-item>
+      <scroll-view scroll-y="true" style="height: {{clientHeight?clientHeight+'px':'auto'}}">
+        <view style="width:94%;margin-left:3%;margin-top:40rpx;height:auto">
+          <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+          <!-- <rich-text nodes="{{nodes}}" space="nbsp"></rich-text> -->
+          <!-- <htmltowxml text="{{nodes}}"></htmltowxml> -->
+        </view>
+      </scroll-view>
+    </swiper-item>
+
+    <swiper-item>
+      <scroll-view scroll-y="true" style="height: {{clientHeight?clientHeight+'px':'auto'}}">
+        <block wx:for="{{saying}}" wx:for-item="items" wx:key="{{index}}">
+          <view style="background:white;margin-top:5rpx;width:100%;">
+            <view style="width:90%;margin-left:5%;height:216rpx;border-bottom:2rpx solid #EFEFEF">
+              <view style="width:15%;height:100%;float:left;">
+                <view style="width:60rpx;height:60rpx;margin-top:14rpx;border-radius:100rpx;overflow:hidden" class="center">
+                  <image style="width:60rpx;height:60rpx" src="{{items.avater}}"></image>
+                </view>
+              </view>
+              <view style="width:85%;height:100%;float:left">
+                <view style="height:40%;width:100%" class="align-middle">
+                  <text class="font-middle" style="color:#666666;font-size:24rpx">{{items.user_name}}</text>
+                  <text class="font-bold" style="color:#C9C9C9;font-size:22rpx;amrgin-left:42rpx;margin-left:22rpx">{{items.add_time}}</text>
+                </view>
+                <view style="height:60%;width:100%">
+                  <text class="font-middle" style="color:#666666;font-size:26rpx;display:block">{{items.content}}</text>
+                </view>
+              </view>
+            </view>
+          </view>
+        </block>
+      </scroll-view>
+    </swiper-item>
+  </swiper>
+
+
+  <!--为下面的fix的view留出空间  -->
+  <view style="width:100%;height:120rpx;background:#F8F9F7"></view>
+</view>
+
+<view class="last-view">
+  <view class="view-left">
+    <view class="left-exm" bindtap='BackHome'>
+      <view class="center exm-top">
+        <image src="../Images/detail_home.png"></image>
+      </view>
+      <view class="center exm-text">
+        <text>首页</text>
+      </view>
+    </view>
+    <view class="left-exm" bindtap='connectHome'>
+      <view class="center exm-top">
+        <image style='margin-right:4rpx;' src="../Images/detail_headphone.png"></image>
+      </view>
+      <view class="center exm-text">
+        <text>客服</text>
+      </view>
+    </view>
+    <!-- <view class="left-exm">
+      <view class="center exm-top">
+        <image src="../Images/detail_bike.png"></image>
+      </view>
+      <view class="center exm-text">  28%
+        <text>购物车</text>
+      </view> 
+    </view> -->
+  </view>
+  <view class="wrap-right">
+      <view class="addToCar" bindtap='showPopupLayer'>加入购物车</view>
+
+      <view wx:if="{{canBuy==1}}" class="center buy-now" bindtap='buyNow'>
+        <text>立即购买</text>
+      </view>
+      <view wx:if="{{canBuy==0}}" class="center buy-not">
+        <text>立即购买</text>
+      </view>
+  </view>
+</view>
+
+<view class="cover" style="top:{{coverData}}" bindtap="hideBlock"></view>
+<view class="main" style="transform: translate3d(0,{{animationHeight}},0);height:{{natureHeight}};">
+  <view style="width:90%;margin-left:5%;height:82%;margin-top:8%;float:left">
+    <view style="height:150rpx;width:100%;float:left">
+      <view style="width:30%;height:100%;float:left;">
+        <image style="width:150rpx;height:150rpx;" mode="widthFix" src="{{goods_thumb}}"></image>
+      </view>
+      <view style="width:60%;height:100%;float:left;display:flex;flex-flow: column-reverse;">
+        <text style="display:block;width:100%;float:left;color:#333333;font-size:24rpx;margin-top:20rpx" class="font-middle">¥{{orderGoodsPrice}}</text>
+        <text style="display:block;width:100%;float:left;color:#232326;font-size:28rpx;" class="font-middle">{{goods_name}}</text>
+      </view>
+      <view style="width:10%;height:100%;float:left">
+        <image style="width:26rpx;height:26rpx;float:right" bindtap='delCur' src="../Images/delPng.png"></image>
+      </view>
+    </view>
+        <text class="attr">规格</text>
+        <view style="display:flex;flex-wrap: wrap;">
+            <view wx:for="{{good_sku.row}}" wx:for-item="item" wx:key="{{index}}">
+                  <text class='{{item.isActive?"active":""}} normal' bindtap="selectAttr" data-attr="{{item}}">{{item.title}}</text>
+            </view>
+        </view>   
+        <view class="count-car">
+            <text>购买数量</text>
+            <count  bind:getSelectNum="getSelectNum" data-index="{{index}}" count="{{total}}" bind:addEvent="addNums" bind:subEvent="subNums" />
+        </view>
+  </view>
+  <view style="width:100%;height:10%;float:left;background:#FF899E;margin-top:3.5%" bindtap='confirm' class="center bot-confirm">
+    <text class="font-bold" style="color:#FFFFFF;font-weight:36rpx;">确认</text>
+  </view>
+</view>
+
+<view style="position:fixed;width:50%;height:100rpx;left:25%;top:45%;background:#5C5C5C;display:{{display}}" class="center">
+  <text style="color:white;font-size:31rpx;" class="commen-font-size">{{showMessage}}</text>
+</view>
+
+  <!-- 多选弹窗 -->
+  <selectedNum bind:getCartNum="getCartNums"  partData="{{partData}}"></selectedNum>

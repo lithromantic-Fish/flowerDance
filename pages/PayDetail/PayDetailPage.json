@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "mp-dialog": "../dialog/dialog"
+  },
+  "navigationBarTitleText": "确认订单"
+}

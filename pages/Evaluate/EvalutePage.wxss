@@ -1,0 +1,40 @@
+.top-line{
+  width: 100%;height: 20rpx;background: #F8F9F7;
+}
+
+.wide{
+  height: 342rpx;width: 90%;margin-left: 5%;margin-top: 50rpx;
+  border-radius: 12rpx;background: #FCFAFA;position: relative;
+}
+
+.wide .wide-textarea{
+  width: 90%;height: 100%;position: absolute;padding-top: 28rpx;
+  padding-left: 30rpx;font-family: PingFang-SC-Medium;
+  font-weight: Medium;color: #333333;font-size: 28rpx;
+}
+
+.wide .holder-style{
+  font-family: PingFang-SC-Medium;font-weight: Medium;
+  color: #CDCDCD;font-size: 28rpx;
+}
+
+.wide .count{
+  width: 100rpx;height: 30rpx;position: absolute;bottom: 28rpx;
+  right: 26rpx;
+}
+
+.wide .count .text1{
+  font-family: PingFang-SC-Medium;font-weight: Medium;
+  color: #CDCDCD;font-size: 28rpx;
+}
+
+
+.btn-out{
+  width: 90%;height:90rpx;margin-left: 5%;background: #FF899E;
+  border-radius: 12rpx;margin-top: 364rpx;
+}
+
+.btn-out text{
+  font-family: PingFang-SC-Bold;font-weight: Bold;
+  color: #FFFFFF;font-size: 36rpx;
+}

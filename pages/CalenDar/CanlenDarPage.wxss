@@ -1,0 +1,10 @@
+.calendar {
+  background-color:white; /*背景色为白色*/
+  padding-top: 10px;    /*上内边距为10px*/
+  color: #F096A6;
+  border-radius: 15px;   /*添加边框圆角*/
+  border: 2rpx solid #F096A6;
+  -webkit-box-shadow:0 0 10px #F096A6;
+  -moz-box-shadow:0 0 10px #F096A6;
+  box-shadow:0 0 10px #F096A6;
+}

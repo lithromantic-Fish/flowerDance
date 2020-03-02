@@ -1,0 +1,45 @@
+<view wx:if="{{showEmpty==1}}">
+  <view class="y-empty center">
+    <image class="empty-image" src="../Images/big_location.png"></image>
+  </view>
+  <view class="empty-text center">
+    <text>暂无收货地址哦，点击下方添加收货地址吧</text>
+  </view>
+</view>
+<block wx:for="{{addrList}}" wx:for-item="items" wx:key="{{index}}">
+  <view class="cut-line"></view>
+  <view class="top">
+    <view class="top-view" bindtap='fromOrder' data-lockerid="{{items.province}}:{{items.city}}:{{items.district}}:{{items.address}}:{{items.address_id}}:{{items.consignee}}:{{items.mobile}}">
+      <view class="align-middle view-fir">
+        <text class="commen-font-style text1">{{items.consignee}}</text>
+        <text class="commen-font-style text2">{{items.mobile}}</text>
+      </view>
+      <view class="view-sec">
+        <text class="commen-font-style text1">{{items.province}} {{items.city}} {{items.district}} {{items.address}}</text>
+      </view>
+    </view>
+    <view class="align-middle bottom-view">
+      <image wx:if="{{items.is_default}}" style="width:34rpx;height:34rpx" data-imgsrc="{{items.is_default}}:{{items.address_id}}:{{index}}" bindtap="setDefault" src="../Images/blue_right.png"></image>
+      <image wx:else style="width:32rpx;height:32rpx;margin-top:8rpx" data-imgsrc="{{items.is_default}}:{{items.address_id}}:{{index}}" bindtap="setDefault" src="../Images/gray_right.png"></image>
+      <text class="commen-font-style text1">默认地址</text>
+      <view class="align-middle view-right">
+        <view bindtap='editAddr' style="height:100%;" class="align-middle"  data-idx="{{items.address_id}}">
+          <image style="width:30rpx;height:30rpx" src="../Images/edit.png"></image>
+          <text class="commen-font-style text1">编辑</text>
+        </view>
+        <view bindtap='delAddr' data-idx="{{items.address_id}}:{{items.is_default}}" >
+          <image class="img1" src="../Images/garbage.png">
+          </image>
+          <text class="commen-font-style text1">删除</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</block>
+
+<view class="bottom-cut-line"></view>
+
+<view class="center bottom" bindtap='addAddr'>
+  <text class="commen-font-style text1"><text class="text2">+</text>添加收货地址</text>
+</view>
+

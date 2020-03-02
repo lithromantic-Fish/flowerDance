@@ -1,0 +1,36 @@
+<view style="width:90%;height:150rpx;margin-left:5%;" class="align-middle">
+  <text style="color:#232326;font-size:35rpx" class="commen-font-style">绑定您的手机号      </text>
+</view>
+
+<view style="height:150rpx;width:90%;margin-left:5%;border-bottom:1px solid #F0F0F0">
+  <view style="width:13%;height:100%;float:left">
+    <image style="width:35rpx;" mode="widthFix" src="../Images/phone.png"></image>
+  </view>
+  <view style="width:87%;height:100%;float:left">
+    <view style="width:100%;height:50%;"><text style="color:#232326;font-size:35rpx;display:block"  class="commen-font-style">手机</text> </view>
+    <view style="width:100%;height:50%;"><input style="font-size:35rpx" placeholder-class='commen-font-style' placeholder='请输入您的手机号' placeholder-style='color:#AAAAAA'></input></view>
+  </view>
+</view>
+
+<view style="height:150rpx;width:90%;margin-left:5%;margin-top:5%">
+  <view style="float:left;width:70%;height:100%;border-bottom:1px solid #F0F0F0">
+    <view style="width:18%;height:100%;float:left">
+      <image style="width:38rpx" mode="widthFix" src="../Images/lock.png"></image>
+    </view>
+    <view style="width:74%;height:100%;float:left">
+      <view style="height:50%;width:100%;"><text style="color:#232326;font-size:35rpx;padding-bottom:5rpx;display:block"  class="commen-font-style"> 验证码</text></view>
+      <view style="height:50%;width:100%">
+        <input style="font-size:35rpx;padding-bottom:5rpx" placeholder-class='commen-font-style' placeholder='请输入验证码' placeholder-style='color:#AAAAAA'></input>
+      </view>
+    </view> 
+  </view>
+  <view style="float:left;width:28%;height:50%;border-radius:40rpx;border:1px solid #CFC7CA;margin-top:10%" class="center">
+    <text class="commen-font-style" style="color:#232326;font-size:30rpx">获取验证码</text>
+  </view>
+</view>
+
+<view style="height:100rpx;width:70%;margin-left:15%;background:#FF899E;border-radius:40rpx;margin-top:260rpx" class="center">
+  <text style="color:white;font-size:35rpx" class="commen-font-style" >立即绑定</text>
+</view>
+
+

@@ -1,0 +1,26 @@
+.phone-pos{
+  width: 100%;height: 280rpx;margin-top: 146rpx;
+}
+
+.phone-pos image{
+  height: 100%;margin-left: 20%;width: 360rpx;
+}
+
+.sucText{
+  width:100%;height:40rpx;margin-top: 40rpx;
+}
+
+.sucText text{
+  font-family: PingFang-SC-Medium;font-weight: Medium;
+  color: #232326;font-size: 28rpx;
+}
+
+.backIndex{
+  width: 70%;margin-left: 15%;height: 90rpx;border-radius: 40rpx;
+  margin-top: 150rpx;background: #FF899E;
+}
+
+.backIndex text{
+  font-family: PingFang-SC-Medium;font-weight: Medium;
+  color: white;font-size: 36rpx;
+}

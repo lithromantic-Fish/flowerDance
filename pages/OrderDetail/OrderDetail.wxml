@@ -1,0 +1,143 @@
+<view wx:if="{{nowStatus!=6}}" class="top-img" >
+  <image class="bg-image" mode='widthFix'src="../Images/orderBg.png"></image>
+  <text class="text1">{{text1}}</text>
+  <text class="text2">{{text2}}</text>
+</view>
+
+<view wx:if="{{nowStatus==6}}" class="top-img" >
+  <image class="bg-image" mode='widthFix' src="../Images/grayBg.png"></image>
+  <view class="mes-top align-middle">
+    <text class="text11">已取消</text>
+    <image class="gray-image" src="../Images/alert.png"></image>
+  </view>
+  <view class="mes-bottom align-middle">
+    <text class="text22">超过付款时间自动取消订单</text>  
+  </view>
+</view>
+
+
+<view class="position">
+  <view class="po-top align-middle">
+    <image mode="widthFix" src="../Images/locationPng.png"></image>
+    <text class="text1">{{consignee}}</text>
+    <text class="text2">{{mobile}}</text>
+  </view>
+  <view class="po-bottom">
+    <text class="text3">{{location}}</text>
+  </view>
+</view>
+
+<view class="goods">
+  <view class="goods-main">
+    <view class="view1 align-middle">
+      <image mode='widthFix' src="{{img}}"></image>
+    </view>
+    <view class="view2">
+      <text class="text1">{{goods_name}}</text>
+      <text class="text2">数量：1</text>
+    </view>
+    <view class="view3 align-middle">
+      <text>￥{{price}}</text>
+    </view>
+  </view>
+</view>
+
+<view class="phoneConnect center" bindtap="connectHome">
+  <image mode='widthFix' src="../Images/chatPng.png"></image>
+  <text>联系客服</text>
+</view>
+
+<view wx:if="{{order_sn}}" class="order-number">
+  <view class="top align-middle">
+    <text class="number">订单编号：</text>
+    <text class="number-value">{{order_sn}}</text>
+    <view class="number-view center"  bindtap='copySn'>复制</view>
+  </view>
+  <view class="bottom align-middle">
+    <text class="number">下单时间：</text>
+    <text class="number-value">{{add_time_str}}</text>
+  </view>
+</view>
+
+<view wx:if="{{invoice_no}}" style="width: 100%;height:90rpx;background:white;margin-top:5rpx;" class=" align-middle">
+  <text class="number2">物流单号：</text>
+  <text class="number-value2">{{invoice_no}}</text>
+  <view class="number-view2 center" bindtap='copyInvoice'>复制</view>
+</view>
+<view class="align-middle" style="width: 100%;height:90rpx;background:white;margin-top:5rpx;">
+  <text class="number2">配送方式：</text>
+  <text class="number-value2">商家配送</text>
+</view>
+
+<view wx:if="{{pay_way}}" class="pay-way align-middle">
+  <text class="text1">支付方式：</text>
+  <text class="text2">{{pay_way}}</text>
+</view>
+
+<view class="price">
+  <view class="top align-middle">
+    <text class="text1">商品总额</text>
+    <text class="text2">￥{{price}}</text>
+  </view>
+  <view class="top align-middle">
+    <text class="text1">运费</text>
+    <text class="text2">￥{{freight}}</text>
+  </view>
+  <view class="top align-middle">
+    <text class="text1">积分</text>
+    <text class="text2">{{pay_number}}</text>
+  </view>
+</view>
+
+<view class="pay align-middle">
+  <view class="pay-main">
+    <text class="text1">实付款：</text>
+    <text wx:if="{{pay_way=='金额支付'}}" class="text2">￥{{realPrice}}</text>
+    <text wx:if="{{pay_way=='积分支付'}}" class="text2">￥0({{integral}}积分)</text>
+  </view>
+</view>
+
+<view class="view-white"></view>
+
+<view wx:if="{{nowStatus==3}}" class="last center" bindtap='confirmGet'>
+  <view class="evaluate2 center">
+    <text>确认收货</text>
+  </view>
+</view>
+
+<view wx:elif="{{nowStatus==4}}" class="last center" bindtap='ToEvaluate'>
+  <view class="evaluate2 center">
+    <text>去评价</text>
+  </view>
+</view>
+
+<view wx:elif="{{nowStatus==6}}" class="last center" bindtap='delOrder'>
+  <view class="evaluate center">
+    <text>删除订单</text>
+  </view>
+</view>
+
+<view wx:elif="{{nowStatus==1}}" class="last" >
+<view style="margin-left:38rpx;margin-right:38rpx;height:100%" class="align-middle">
+  <text bindtap='cancelOrder' style="display:block;font-family:PingFang-SC-Medium;font-weight:Medium;color:#AAAAAA;font-size:26rpx">取消订单</text>
+  <view style="background:#FF6883;border-radius:36rpx;height:72rpx;width:242rpx;margin-left: auto;" class="center" bindtap='toPay'>
+    <text style="font-family:PingFang-SC-Medium;font-weight:Medium;color:#FFFFFF;font-size:28rpx;">立即支付</text>
+  </view>
+  </view>
+</view>
+
+
+<view style="position:fixed;width:50%;height:100rpx;left:25%;top:45%;background:#5C5C5C;display:{{display}}" class="center">
+  <text style="color:white;font-size:31rpx;" class="commen-font-size">{{showMessage}}</text>
+</view>
+
+<!-- 确认的弹框 -->
+<view style="position:fixed;top:0rpx;left:0rpx;width:100%;height:{{curHeight}};display:{{curDisplay}};background:#000000;opacity:0.6;z-index:10;"></view>
+<view style="position:fixed;width:70%;left:15%;height:200rpx;background:white;border-radius:28rpx;top:420rpx;z-index:11;display:{{curDisplay}}" >
+  <view style="width:100%;height:60%;border-bottom:2rpx solid #E0E0E0" class="center">
+    <text style="font-family:PingFang-SC-Medium;font-weight:Medium;color:#333333;font-size:32rpx" >{{curMessage}}</text>
+  </view>
+  <view style="width:100%;height:40%;" bindtap='curHide' class="center">
+    <text style="font-family:PingFang-SC-Medium;font-weight:Medium;color:#0095CC;font-size:32rpx">确认</text>
+  </view>
+</view>

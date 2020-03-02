@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText":"收花日历",
+  "usingComponents": {
+    "calendar": "plugin://calendar/calendar"
+  }
+}

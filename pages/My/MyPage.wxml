@@ -1,0 +1,98 @@
+<view class="my-top">
+  <image class="pink-bg" mode="widthFix" src="../Images/pink_bg.png"></image>
+
+  <view class="top-main">
+    <view class="main-one">
+      <view class="center one-head">
+        <view  class="center head-view">
+          <image wx:if="{{ifLogin==0}}" src="../Images/spike.jpg"></image>
+          <image wx:else src='{{userAvater}}'>
+          </image>
+        </view>
+      </view>
+      <view wx:if="{{ifLogin==1}}" class="one-title">
+        <text class="title1">用户ID：{{userName}}</text>
+      </view>
+      <view wx:else class="one-title" bindtap="changeToLogin">
+        <text class="title1">点击登录</text>
+      </view>
+    </view>
+
+    <view class="main-second">
+      <view class="second-left" data-status="1" bindtap='toOrder'>
+        <view class="center left-image">
+          <image style="width:56rpx;height:48rpx" src="../Images/wait_pay.png"></image>
+        </view>
+        <view class="center left-text">
+          <text>待付款</text>
+        </view>
+      </view>
+
+      <view class="second-left" data-status="2" bindtap='toOrder'>
+        <view class="center left-image">
+          <image style="width:56rpx;height:42rpx" src="../Images/serving.png"></image>
+        </view>
+        <view class="center left-text">
+          <text>待发货</text>
+        </view>
+      </view>
+
+      <view class="second-left" data-status="3" bindtap='toOrder'>
+        <view class="center left-image">
+          <image style="width:56rpx;height:46rpx" src="../Images/wait_evaluate.png"></image>
+        </view>
+        <view class="center left-text">
+          <text>待收货</text>
+        </view>
+      </view>
+
+      <view class="second-left" data-status="4" bindtap='toOrder'>
+        <view class="center left-image">
+          <image style="width:56rpx;height:48rpx" src="../Images/complete.png" mode='widthFix'></image>
+        </view>
+        <view class="center left-text">
+          <text>待评价</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="center main-bottom" bindtap='toAllOrder'>
+      <text class="bottom-text">全部订单</text>
+      <image class="bottom-image" mode="widthFix" src="../Images/right_point.png"></image>
+    </view>
+
+  </view>
+</view>
+
+<view class="my-td" bindtap='changeToAddr' style="margin-top:50rpx" bindtap='toMyAddr'> 
+  <text>我的地址</text>
+  <image src="../Images/right_point.png" mode='widthFix'></image>
+</view>
+
+
+<!-- 收花日历暂时隐藏，后期再做 -->
+<view class="my-td" bindtap='toCalenDar' style="display:none">
+  <text>收花日历</text>
+  <image src="../Images/right_point.png" mode='widthFix'></image>
+</view>
+
+
+<!-- 分享暂时关闭掉 -->
+<!-- <view class="my-td" bindtap='toShare'>
+  <text>我的分享</text>
+  <image src="../Images/right_point.png" mode='widthFix'></image>
+</view> -->
+
+<view class="my-td" bindtap='toIntegray'>
+  <text>我的积分</text>
+  <image src="../Images/right_point.png" mode='widthFix'></image>
+</view>
+
+<view class="my-td" bindtap='ConnectHome'>
+  <text>帮助与客服</text>
+  <image src="../Images/right_point.png" mode='widthFix'></image>
+</view>
+
+<view style="position:fixed;width:50%;height:100rpx;left:25%;top:45%;background:#5C5C5C;display:{{display}}" class="center">
+  <text style="color:white;font-size:31rpx;" class="commen-font-size">{{showMessage}}</text>
+</view>

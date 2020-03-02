@@ -1,0 +1,641 @@
+@import "../../wxParse/wxParse.wxss";
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+button::after{
+  border: none;
+} 
+button{
+  padding-left: 0rpx!important;
+}
+
+.main-style {
+  background: #f8f9f7;
+}
+
+.main-style  .top-view {
+  height: 750rpx;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.main-style  .top-view image {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.main-style  .top-view .view-bg {
+  position: absolute;
+  height: 40rpx;
+  width: 80rpx;
+  background: #000;
+  opacity: 0.4;
+  margin-top: 88%;
+  margin-left: 82%;
+  border-radius: 30rpx;
+}
+
+.main-style  .top-money {
+  height: 110rpx;
+  width: 100%;
+  background: #ff899e;
+}
+
+.main-style  .top-money  .in-text {
+  height: 60%;
+  width: auto;
+}
+
+.main-style  .top-money  .in-text .text1 {
+  font-size: 40rpx;
+  color: white;
+  padding-left: 40rpx;
+}
+
+.main-style  .top-money .in-text .text2 {
+  font-size: 56rpx;
+  color: white;
+}
+
+.main-style  .top-money .in-text .text3 {
+  font-size: 30rpx;
+  color: white;
+}
+
+.tw {
+  position: relative;
+  width: 100%;
+  background: white;
+  border-bottom: 1px solid #f8f9f7;
+}
+
+.tw .tw-text1 {
+  padding-left: 40rpx;
+  display: block;
+  color: #232326;
+  font-size: 28rpx;
+  padding-right: 40rpx;
+  font-weight: Medium;
+  font-family: PingFang-SC-Medium;
+  padding-top: 10rpx;
+}
+
+.tw .tw-text2 {
+  padding-left: 40rpx;
+  display: block;
+  color: #999;
+  font-size: 24rpx;
+  padding-right: 40rpx;
+  padding-top: 10rpx;
+  font-weight: Regular;
+  font-family: PingFang-SC-Regular;
+  padding-bottom: 10rpx;
+}
+.tw .share{
+position: absolute;
+display: flex;
+overflow: hidden;
+margin-right: 0px;
+margin-top: 0px;
+height: 45rpx;
+right: 0rpx;
+top: 10rpx;
+background-color: rgb(244, 244, 244);
+flex-direction: row;
+-webkit-box-orient: horizontal;
+border-top-left-radius: 18rpx;
+border-bottom-left-radius: 17rpx;
+-webkit-box-direction: normal;
+align-items: center;
+border: none;
+border-top-right-radius: 0rpx!important;
+border-bottom-right-radius: 0rpx!important;
+border: 1px solid rgb(244, 244, 244);
+
+}
+.tw .share image{
+  width: 30rpx;
+  height: 30rpx;
+  padding-left: 20rpx;
+  padding-right: 12rpx;
+
+}
+.tw .share .share-text{
+  font-size: 24rpx;
+  color:rgb(153, 153, 153);
+}
+
+
+.thr {
+  width: 100%;
+  height: 100rpx;
+  background: white;
+}
+
+.thr image {
+  width: 28rpx;
+  margin-left: 28rpx;
+}
+
+.thr text {
+  color: #999;
+  font-size: 24rpx;
+  padding-left: 10rpx;
+  font-weight: Regular;
+  font-family: PingFang-SC-Regular;
+}
+
+.four {
+  height: 90rpx;
+  width: 100%;
+  background: white;
+  margin-top: 40rpx;
+}
+
+.four .text1 {
+  font-size: 26rpx;
+  color: #aaa;
+  padding-left: 40rpx;
+  font-family: PingFang-SC-Regular;
+  font-weight: Regular;
+}
+
+.four .text2 {
+  font-size: 24rpx;
+  color: #666;
+  margin-left: auto;
+  font-family: PingFang-SC-Regular;
+  font-weight: Regular;
+  margin-right: 38rpx;
+}
+
+.four image {
+  width: 14rpx;
+  margin-left: auto;
+  margin-right: 30rpx;
+}
+
+.last-image {
+  margin-top: 40rpx;
+  width: 100%;
+}
+
+.last-view {
+  width: 100%;
+  height: 120rpx;
+  position: fixed;
+  bottom: 0rpx;
+  left: 0rpx;
+  background: white;
+}
+
+.last-view .view-left {
+  width: 40%;
+  height: 100%;
+  float: left;
+}
+
+.last-view .view-left .left-exm {
+  width: 45%;
+  height: 100%;
+  float: left;
+  margin-left: 3%;
+}
+
+.last-view .view-left .left-exm .exm-top {
+  height: 60%;
+  width: 100%;
+}
+
+.last-view .view-left .left-exm .exm-top image {
+  height: 30rpx;
+  width: 30rpx;
+  margin-top: 20rpx;
+}
+
+.last-view .view-left .left-exm .exm-text {
+  width: 100%;
+}
+
+.last-view .view-left .left-exm .exm-text text {
+  font-size: 20rpx;
+  opacity: 0.8;
+}
+
+.last-view .buy-now {
+  flex: 1;
+  width: 60%;
+  height: 100%;
+  background: #ff899e;
+  float: left;
+}
+
+.last-view .buy-now text {
+  font-size: 28rpx;
+  color: white;
+  font-weight: bold;
+}
+
+.last-view .buy-not {
+  width: 60%;
+  height: 100%;
+  background: #ccc;
+  float: left;
+}
+
+.last-view .buy-not text {
+  font-size: 28rpx;
+  color: white;
+  font-weight: bold;
+}
+
+/* 下面的样式为点击了购买后弹出的 */
+
+.choose {
+  width: 100%;
+  height: 90rpx;
+  border-bottom: 2rpx solid #f8f9f7;
+  background: white;
+  margin-top: 20rpx;
+  overflow: block;
+}
+
+.choose .par1 {
+  height: 94%;
+  width: auto;
+  margin-left: 5%;
+  float: left;
+  border-bottom: 4rpx solid #ff899e;
+}
+
+.choose .par1 text {
+  font-family: PingFang-SC-Medium;
+  font-weight: Medium;
+  color: #333;
+  font-size: 26rpx;
+}
+
+.choose .par2 {
+  height: 94%;
+  width: auto;
+  margin-left: 5%;
+  float: left;
+}
+
+.choose .par2 text {
+  font-family: PingFang-SC-Regular;
+  font-weight: Regular;
+  color: #999;
+  font-size: 26rpx;
+}
+
+.choose .integray1 {
+  height: 94%;
+  width: auto;
+  margin-left: 7%;
+  float: left;
+}
+
+.choose .integray1 text {
+  font-family: PingFang-SC-Regular;
+  font-weight: Regular;
+  color: #999;
+  font-size: 26rpx;
+}
+
+.choose .integray2 {
+  height: 94%;
+  width: auto;
+  margin-left: 7%;
+  float: left;
+  border-bottom: 4rpx solid #ff899e;
+}
+
+.choose .integray2 text {
+  font-family: PingFang-SC-Medium;
+  font-weight: Medium;
+  color: #333;
+  font-size: 26rpx;
+}
+
+/* 下面为评价的样式 */
+
+.words {
+  width: 90%;
+  height: 216rpx;
+  background: white;
+  margin-bottom: 3rpx;
+  margin-left: 5%;
+}
+
+.words .top {
+  width: 100%;
+  height: 50%;
+}
+
+.words .bottom {
+  width: 100%;
+  height: 50%;
+}
+
+/* 以下为限时团购的样式 */
+
+.special {
+  height: 100rpx;
+  width: 100%;
+}
+
+.special .spe-left {
+  width: 70%;
+  height: 100%;
+  background: #ff437f;
+  float: left;
+}
+
+.special .spe-left .in-text {
+  height: 100%;
+  margin-top: 70rpx;
+}
+
+.special .spe-left .in-text .text1 {
+  margin-left: 40rpx;
+  font-size: 40rpx;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 1);
+}
+
+.special .spe-left .in-text .text2 {
+  margin-left: 5rpx;
+  font-size: 50rpx;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 1);
+}
+
+.special .spe-left .in-text .text3 {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 1);
+}
+
+.special .spe-left .in-text .text4 {
+  font-size: 22rpx;
+  color: rgba(255, 197, 215, 1);
+  margin-left: 25rpx;
+}
+
+.special .spe-left .in-text .text5 {
+  font-size: 25rpx;
+  color: rgba(255, 197, 215, 1);
+  margin-left: 10rpx;
+  text-decoration: line-through;
+}
+
+.special .spe-left .left-money {
+  width: 50%;
+  height: 100%;
+  float: left;
+}
+
+.special .spe-left .left-money .s-text {
+  margin-top: 20rpx;
+  margin-left: 40rpx;
+}
+
+.special .spe-left .left-money .s-text .text1 {
+  color: white;
+  font-size: 40rpx;
+  font-weight: bold;
+}
+
+.special .spe-left .left-money .s-text .text2 {
+  color: white;
+  font-size: 50rpx;
+  font-weight: bold;
+}
+
+.special .spe-left .left-money .s-text .text3 {
+  color: white;
+  font-size: 30rpx;
+  font-weight: bold;
+}
+
+.special .spe-left .left-view {
+  width: 70%;
+  height: 100%;
+  float: left;
+}
+
+.special .spe-left .left-text {
+  width: 40%;
+  height: 100%;
+  float: left;
+  margin-left: -40rpx;
+}
+
+.special .spe-left .left-text .text1 {
+  width: 100%;
+  height: 20%;
+  float: left;
+  color: white;
+  font-size: 25rpx;
+  opacity: 0.7;
+}
+
+.special .spe-left .left-text .text11 {
+  text-decoration: line-through;
+}
+
+.special .spe-left .left-text text {
+  letter-spacing: 5rpx;
+}
+
+.special .spe-left .left-text .text2 {
+  width: 100%;
+  height: 20%;
+  float: left;
+  font-size: 25rpx;
+  padding-top: 40rpx;
+  color: white;
+}
+
+.special .spe-right {
+  width: 30%;
+  height: 100%;
+  background: #ffeae9;
+  float: left;
+}
+
+.special .spe-right text {
+  font-size: 22rpx;
+}
+
+.special .spe-right .right-top {
+  height: 30%;
+  width: 100%;
+  float: left;
+}
+
+.special .spe-right .right-top text {
+  color: #f1305e;
+  font-weight: Medium;
+  font-family: PingFang-SC-Medium;
+}
+
+.special .spe-right .right-last {
+  height: 70%;
+  width: 100%;
+  float: left;
+}
+
+.special .spe-right .right-last .last-one {
+  width: 23%;
+  height: 75%;
+  float: left;
+  margin-top: 2%;
+  border-radius: 10rpx;
+  background: #ff437f;
+}
+
+.special .spe-right .right-last .last-one text {
+  color: #ff437f;
+}
+
+.special .spe-right .right-last .last-two {
+  width: 10%;
+  height: 70%;
+  float: left;
+  margin-top: 5%;
+}
+
+.special .spe-right .right-last .last-two text {
+  color: #ff437f;
+}
+
+.left-thr {
+  margin-left: 30rpx;
+}
+
+.top-thr {
+  margin-top: 30rpx;
+}
+
+.normal {
+  height: 56rpx;
+  background: #f4f4f4;
+  float: left;
+  margin-right: 20rpx!important;
+}
+
+.normal text {
+  color: #666;
+  font-size: 24rpx;
+}
+
+.order-special {
+  width: 176rpx;
+  height: 52rpx;
+  background: rgba(255, 244, 246, 1);
+  float: left;
+  border: 2rpx solid rgba(255, 137, 158, 1);
+}
+
+.order-special text {
+  color: rgba(254, 86, 116, 1);
+  font-size: 24rpx;
+}
+
+/* 接下来对li标签进行处理 */
+
+.wxParse-li-circle {
+  display: none;
+}
+
+.wxParse-li {
+  height: 50rpx;
+  white-space: normal;
+}
+
+.wxParse-li-text {
+  line-height: 26rpx;
+}
+
+.wrap-right {
+  display: flex;
+  height: 100%;
+}
+
+.wrap-right .addToCar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  font-size: 28rpx;
+  color: white;
+  font-weight: bold;
+  background-image: linear-gradient(to right, #ffc500, #ff9402);
+}
+
+.cover {
+  position: fixed;
+  left: 0rpx;
+  top: 0rpx;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  z-index: 98;
+}
+
+.main {
+  top: 70px;
+  background: white;
+  width: 100%;
+  z-index: 99;
+  position: fixed;
+  left: 0rpx;
+  transition:  transform .2s;
+}
+.bot-confirm{
+  position: fixed;
+  bottom: 0
+}
+.attr{
+    font-size:34rpx;
+    font-weight: normal;
+    padding: 10rpx 0;
+}
+.normal{
+    background-color: #F8F8F8;
+    white-space: nowrap;
+    border-radius: 28rpx;
+    margin: 21rpx 5rpx;
+    font-size: 24rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rpx 15rpx;
+    color: #333;
+}
+.active{
+  background-color: #FF899E!important;
+  color: white!important;
+}
+.count-car{
+  display: flex;
+justify-content: space-between;
+margin-top: 20rpx;
+border-top: 1rpx solid #f2f2f2;
+padding-top: 30rpx;
+font-size: 34rpx;
+color: #333;
+
+}

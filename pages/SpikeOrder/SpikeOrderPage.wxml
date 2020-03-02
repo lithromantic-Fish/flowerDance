@@ -1,0 +1,97 @@
+<view class="main-style">
+  <view class="top-view">
+    <image mode='scaleToFill' src="../Images/arr_today.jpg"></image>
+    <view class="center view-bg">
+      <text style="color:white">1/5</text>
+    </view>
+  </view>
+
+  <view class="special">
+    <view class="spe-left">
+      <view class="center left-money">
+        <text>¥268</text>
+      </view>
+      <view class="left-text">
+        <text class="text1">
+          原价:<text class="text11">¥268</text>
+        </text>
+        <text class="text2">已抢5件</text>
+      </view>
+    </view>
+    <view class="spe-right">
+      <view class="center right-top">
+        <text>距离结束还剩</text>
+      </view>
+      <view class="right-last">
+        <view class="center last-one" style="margin-left:10%">
+          <text style="font-size:28rpx;color:white;">18</text>
+        </view>
+        <view class="center last-two">
+          <text>:</text>
+        </view>
+        <view class="center last-one">
+          <text style="font-size:28rpx;color:white;">23</text>
+        </view>
+        <view class="center last-two">
+          <text>:</text>
+        </view>
+        <view class="center last-one">
+          <text style="font-size:28rpx;color:white;">56</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="tw">
+    <text class="tw-text1">单品花篮</text>
+    <text class="tw-text2">超级超级精致的花篮哦，具有传递青春无限好的蕴意唷~</text>
+  </view>
+  <view class="align-middle thr">
+    <image mode='widthFix' src="../Images/get.png"></image>
+    <text>采地直购</text>
+    <image mode='widthFix' src="../Images/protect.png"></image>
+    <text>花损赔付</text>
+    <image mode='widthFix' src="../Images/send.png"></image>
+    <text>准时送达</text>
+  </view>
+
+  <view class="align-middle four">
+    <text>购买送积分</text>
+    <image mode='widthFix' src="../Images/right_point.png"></image>
+  </view>
+
+  <image class="last-image" mode="widthFix" src="../Images/page_main.png"></image>
+</view>
+
+<view class="last-view">
+  <view class="view-left">
+    <view class="left-exm">
+      <view class="center exm-top">
+        <image src="../Images/detail_home.png"></image>
+      </view>
+      <view class="center exm-text">
+        <text>首页</text>
+      </view>
+    </view>
+    <view class="left-exm">
+      <view class="center exm-top">
+        <image src="../Images/detail_headphone.png"></image>
+      </view>
+      <view class="center exm-text">
+        <text>客服</text>
+      </view>
+    </view>
+    <view class="left-exm">
+      <view class="center exm-top">
+        <image src="../Images/detail_bike.png"></image>
+      </view>
+      <view class="center exm-text">
+        <text>购物车</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="center buy-now">
+    <text>立即秒杀</text>
+  </view>
+</view>

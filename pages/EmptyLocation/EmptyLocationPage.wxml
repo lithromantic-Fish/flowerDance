@@ -1,0 +1,12 @@
+<view style="width:100%;height:{{height}};background:#F8F9F7">
+  <view style="width:100%;height:500rpx;" class="center">
+    <image style="width:250rpx;" mode='widthFix' src="../Images/big_location.png"></image>
+  </view>
+  <view style="width:100;height:50rpx;" class="center">
+    <text style="color:#AAAAAA;font-size:30rpx" class="commen-font-style">暂无收货地址哦，点击下方添加收货地址吧</text>
+  </view>
+
+  <view style="position:fixed;bottom:0rpx;left:0rpx;background:white;height:100rpx;width:100%" class="center">
+    <text style="color:#333333;font-size:35rpx;letter-spacing:5rpx" class="commen-font-style"><text style="font-size:45rpx;padding-right:2rpx">+</text>添加收货地址</text>
+  </view>
+</view>

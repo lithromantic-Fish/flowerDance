@@ -1,0 +1,36 @@
+.find-top{
+  position:fixed;width:100%;height:0rpx;box-shadow:0rpx 0rpx 30rpx lightgray;top:0rpx;left:0rpx;z-index:2;border-bottom:1px solid #F6F6F6;
+}
+
+.commen-view{
+  height:450rpx;width:90%;margin-left:5%;margin-top:30rpx;
+}
+
+.commen-view .view-title{ 
+  height:10%;width:100%;display:flex;align-items:center;
+}
+
+.commen-view .view-title text{ 
+  color:#333333;font-size:30rpx;font-weight:bold;font-family:PingFang-SC-Bold;
+}
+
+.commen-view .view-img{ 
+  height:76%;width:100%;overflow:hidden;border-radius:10rpx;margin-top:2%;
+}
+
+.commen-view .view-bottom{ 
+  overflow:hidden;height:10%;width:100%;display:flex;align-items:center;margin-top:2%;
+}
+
+.commen-view .view-bottom .text1{ 
+  color:rgba(170, 170, 170, 1);margin-left:15rpx;font-size:24rpx;
+}
+
+.commen-view .view-bottom .text2{ 
+  flex:1;text-align:right;color:rgba(170, 170, 170, 1);font-size:24rpx;
+}
+
+.commen-cut{
+  width:100%;height:40rpx;background:#FBFBFB;margin-top:30rpx;
+}
+

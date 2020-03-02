@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "商品详情",
+  "usingComponents": {
+    "count": "/components/count/count",
+    "selectedNum": "/components/selectedNum/selectedNum"
+  },
+  "onReachBottomDistance": 30
+}

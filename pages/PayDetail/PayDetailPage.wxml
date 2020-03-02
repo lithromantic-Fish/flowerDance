@@ -1,0 +1,137 @@
+<view class="top">
+
+  <view wx:if="{{haveAddr==0}}">
+    <view class="choose-no align-middle" bindtap='orderChooseAddr'>
+      <image style="width:20rpx;height:28rpx;" src="../Images/location.png"></image>
+      <text class="choose-text">请选择地址</text>
+
+      <image src='../Images/right_point.png' class="image-right"></image>
+    </view>
+  </view>
+
+  <view wx:if="{{haveAddr==1}}">
+    <view class="choose" bindtap='orderChooseAddr'>
+      <view class="left-view">
+        <view class="addr-top align-middle">
+            <image style="width:20rpx;height:28rpx;"src="../Images/location.png"></image>
+            <text style="font-size:28rpx;margin-left:30rpx;color:#232326;">{{myName}}</text>
+            <text style="font-size:28rpx;margin-left:20rpx;color:#232326;">{{myPhone}}</text>
+        </view>
+        <view class="addr-bottom">
+            <text style="font-size:28rpx;color:#232326;margin-left:50rpx">{{addr}}</text>
+        </view>
+      </view>
+      <view class="right-view align-middle">
+        <image src='../Images/right_point.png'></image>
+      </view>
+    </view>
+
+  </view>
+
+  <image class="image-point" mode="widthFix" src='../Images/blue_red.png'></image>
+
+  <view class="middle">
+    <view class="center one">
+      <image style="width:150rpx;" src="{{goods_thumb}}" mode="widthFix"></image>
+    </view>
+    <view class="two">
+      <text class="text1 hideMuch">{{goods_name}}</text>
+      <text class="text2 hideMuch">{{goods_brief}}</text>
+    </view>
+    <view class="three">
+      <text class="text1">¥ {{shopLastPrice}}</text>
+      <text class="text2">x 1</text>
+    </view>
+  </view>
+
+  <view wx:if="{{pay_type==1}}" class="bottom" style="height:120rpx;width:90%;margin-left:5%;display:flex;align-items:center;">
+    <text style="display:block;color:#232326;font-weight:Medium;font-family:PingFang-SC-Medium;margin-left: auto;font-size:28rpx;">总计：¥ {{shop_price}}</text>
+  </view>
+
+  <view wx:if="{{pay_type==2}}" class="bottom" style="height:120rpx;width:90%;margin-left:5%;display:flex;align-items:center;">
+    <text style="font-size:30rpx;display:block;color:#232326;font-weight:Medium;font-family:PingFang-SC-Medium;margin-left: auto;font-size:30rpx;">总计:¥0({{origin_integray}}积分)</text>
+  </view>
+
+</view>
+
+<view style="width:100%;height:100rpx;background:white;margin-top:20rpx;">
+  <view style="height:100%;width:90%;margin-left:5%;display:flex;align-items:center;">
+    <text style="font-size:28rpx;padding-right:20rpx" class="commen-font-style">配送方式</text>
+    <view style="margin-left:auto;">
+      <text style="color:#AAAAAA;font-size:24rpx;" class="commen-font-style">商家配送</text>
+    </view>
+  </view>
+</view>
+
+<view wx:if="{{goodsType==1}}" style="width:100%;height:100rpx;background:white;margin-top:20rpx;">
+  <view style="height:100%;width:90%;margin-left:5%;display:flex;align-items:center;">
+    <text style="font-size:28rpx;padding-right:20rpx" class="commen-font-style">支付方式</text>
+    <view style="margin-left:auto;" bindtap='changePayWay'>
+      <text style="color:#AAAAAA;font-size:24rpx;" class="commen-font-style">{{payWay}}</text>
+      <image src='../Images/right_point.png' style="width:12rpx;height:20rpx;margin-left:20rpx"></image>
+    </view>
+  </view>
+</view>
+
+<view wx:else style="width:100%;height:100rpx;background:white;margin-top:20rpx;">
+  <view style="height:100%;width:90%;margin-left:5%;display:flex;align-items:center;">
+    <text style="font-size:28rpx;padding-right:20rpx" class="commen-font-style">支付方式</text>
+    <view style="margin-left:auto;">
+      <text style="color:#AAAAAA;font-size:24rpx;" class="commen-font-style"> 全额支付</text>
+    </view>
+  </view>
+</view>
+
+<view style="width:100%;height:100rpx;margin-top:20rpx;background:white">
+  <view style="height:100%;width:90%;margin-left:5%;display:flex;align-items:center;">
+    <text style="width:15%;font-size:28rpx;" class="commen-font-style">备注</text>
+    <input bindinput='remark' style="width:85%;color:##333333;font-size:26rpx;" class="commen-font-style" placeholder='有其他需要请填写在这里'>{{remark}}</input>
+  </view>
+</view>
+
+<view style="width:100%;height:100rpx;margin-top:20rpx;background:white" class="a">
+  <view style="height:100%;width:90%;margin-left:5%;display:flex;align-items:center;justify-content:space-between;">
+    <view>
+      <text style="font-size:28rpx;" >同意 </text>
+      <text bindtap="tapOneDialogButton" style="color:#568AB7;font-size:28rpx;">《花加协议》</text>
+      <text style="font-size:28rpx;">已知晓购物提示信息</text>
+    </view>
+      <switch checked="{{switch1Checked}}" bindchange="switch1Change"/>
+  </view>
+</view>
+
+
+<view style="position:fixed;width:100%;height:120rpx;display:flex;bottom:0rpx;left:0rpx;">
+  <view style="width:70%;height:100%;float:left;background:white;padding-left:40rpx" class="align-middle">
+    <text style="font-sie:32rpx;color:##FFFFFF" decode="{{true}}" class="commen-font-style">总计&nbsp;:&nbsp;&nbsp;</text>
+    <text wx:if="{{pay_type==1}}" style="font-size:32rpx;color:#FF437F;" class="commen-font-style"> ¥ {{shop_price}}</text>
+    <text wx:elif="{{pay_type==2}}" style="font-size:32rpx;color:#FF437F;" class="commen-font-style">¥0({{origin_integray}}积分)</text>
+  </view>
+  <view style="width:30%;height:100%;background:#FE407C;float:left" bindtap='Pay' class="center">
+    <text style="color:white;font-size:30rpx" class="commen-font-style">去付款</text>
+  </view>
+</view>
+
+<view style="position:fixed;width:100%;height:{{curTop}};top:0rpx;left:0rpx;background:#000000;opacity:0.4;z-index:2;display:{{display_way}}"></view>
+<view style="z-index:2;position:fixed;width:100%;left:0rpx;background:white;top:{{curTop}};height:{{curBottom}};display:{{display_way}}">
+  <view class="align-middle" style="width:90%;height:50%;margin-left:5%;float:left;border-bottom:2rpx solid #EFEFEF" bindtap='moneyPay'>
+    <text class="font-middle" style="color:#333333;font-size:28rpx">全额支付</text>
+    <text style="color:#333333;font-size:28rpx;margin-left:auto" class="font-middle">共需支付{{origin_price}}元</text>
+  </view>
+  <view wx:if="{{payByNumber==true}}" class="align-middle" style="width:90%;height:50%;margin-left:5%;float:left;border-bottom:2rpx solid #EFEFEF" bindtap='numberPay'>
+    <text class="font-middle" style="color:#333333;font-size:28rpx">积分支付</text>
+    <text style="color:#333333;font-size:28rpx;margin-left:auto" class="font-middle">共需支付{{origin_integray}}积分</text>
+  </view>
+  <view wx:if="{{payByNumber==false}}" class="align-middle" style="width:90%;height:50%;margin-left:5%;float:left;border-bottom:2rpx solid #EFEFEF">
+    <text class="font-middle" style="color:#333333;font-size:28rpx">商品需要{{origin_integray}}积分，当前{{myNumber}}积分，积分不足</text>
+  </view>
+</view>
+
+
+<view style="position:fixed;width:50%;height:100rpx;left:25%;top:45%;background:#5C5C5C;display:{{display}}" class="center">
+  <text style="color:white;font-size:31rpx;" class="commen-font-size">{{showMessage}}</text>
+</view>
+
+ <mp-dialog title="用户协议" show="{{showOneButtonDialog}}" bindbuttontap="tapDialogButton" buttons="{{oneButton}}">
+        <view>用户协议内容用户协议内容用户协议内容用户协议内容用户协议内容</view>
+ </mp-dialog>

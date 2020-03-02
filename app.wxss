@@ -1,0 +1,70 @@
+/**app.wxss**/
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.align-middle {
+  display: flex;
+  align-items: center;
+}
+
+.justify-middle {
+  display: flex;
+  justify-content: center;
+}
+
+.gap-top {
+  padding-top: 10rpx;
+  padding-bottom: 5rpx;
+}
+
+.gap-top {
+  padding-top: 5rpx;
+  padding-bottom: 10rpx;
+}
+
+.commen-img {
+  width: 100%;
+  height: 100%;
+}
+
+.commen-font-style {
+  font-weight: Medium;
+  font-family: PingFang-SC-Medium;
+}
+
+.font-middle {
+  font-family: PingFang-SC-Medium;
+  font-weight: Medium;
+}
+
+.font-bold {
+  font-family: PingFang-SC-Bold;
+  font-weight: Bold;
+}
+
+.no-line {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mess-view{
+position:fixed;width:50%;height:100rpx;left:25%;top:45%;background:#5C5C5C;
+}
+
+.mess-view text{
+	color:white;font-size:31rpx;
+}
+
+.hideMuch{
+display:-webkit-box;
+-webkit-line-clamp:1;
+overflow:hidden;
+text-overflow:ellipsis;
+-webkit-box-orient:vertical;
+word-break:break-all;
+}

@@ -1,0 +1,49 @@
+<import src="../../wxParse/wxParse.wxml" />
+<view class="top center">
+  <image mode='widthFix' src="../Images/waveBg.png"></image>
+  <text class="text1">{{nowGet}}</text>
+  <text class="text2">当前积分</text>
+</view>
+
+<view class="second">
+  <view class="commen center" bindtap="toRule">
+    <view class="{{integray==0?'inside1':'inside2'}} center">
+      <text>积分规则</text>
+    </view>
+  </view>
+  <view class="commen center" bindtap="toRecord">
+    <view class="center {{integray==1?'inside1':'inside2'}}">
+      <text>积分记录</text>
+    </view>
+  </view>
+</view>
+
+
+<swiper style="height: {{clientHeight?clientHeight+'px':'auto'}}" current="{{currentTab}}" duration="200" bindchange="swiperchange">
+  <swiper-item>
+    <scroll-view scroll-y="true" style="height: auto">
+      <view class="context">
+        <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+      </view>
+    </scroll-view>
+  </swiper-item>
+
+  <swiper-item>
+    <scroll-view scroll-y="true" style="height: auto">
+      <block wx:for="{{record}}" wx:for-item="items" wx:key="{{index}}">
+        <view class="every-block ">
+          <view class="bottom-line align-middle">
+            <view class="part-left">
+              <text class="text1">{{items.mark}}</text>
+              <text class="text2">{{items.create_time}}</text>
+            </view>
+            <view class="part-right align-middle">
+              <text>{{items.integral}}</text>
+            </view>
+          </view>
+        </view>
+      </block>
+
+    </scroll-view>
+  </swiper-item>
+</swiper>

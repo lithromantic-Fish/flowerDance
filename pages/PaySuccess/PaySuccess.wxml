@@ -1,0 +1,19 @@
+<view class="top center">
+  <image src="../Images/pay_ok.png"></image>
+</view>
+
+<view class="put-text center">
+    <text>购买成功</text>
+</view>
+
+<view class="center y-top">
+<view class="see-detail center" bindtap='seeDetail'>
+  <text>查看详情</text>
+</view>
+</view>
+
+<view class="center y-bottom">
+<view class="back-home center" bindtap='backHome'>
+  <text>返回首页</text>
+</view> 
+</view>

@@ -1,0 +1,11 @@
+<view class="phone-pos">
+  <image src="../Images/pink_phone.png"></image>
+</view>
+
+<view class="sucText center">
+  <text>评价成功</text>
+</view>
+
+<view class="backIndex center" bindtap="backToMain">
+  <text>返回首页</text>
+</view>

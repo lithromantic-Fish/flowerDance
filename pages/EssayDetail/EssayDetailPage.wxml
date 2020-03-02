@@ -1,0 +1,33 @@
+<import src="../../wxParse/wxParse.wxml" />
+
+<button open-type="share" id="btnId" style="display:hidden" bindtap='clickToShare'></button>
+
+<view bindtap='hideShare'>
+  <view style="width:100%;height:330rpx;overflow:hidden" class="center">
+    <image src="{{imgSrc}}"></image>
+  </view>
+
+
+  <view style="width:90%;margin-left:5%">
+    <view style="width:100%;margin-top:96rpx">
+      <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+    </view>
+  </view>
+
+  <view style="height:200rpx;width:100%"></view>
+
+  <view style="width:100%;height:120rpx;position:fixed;bottom:0rpx;left:0rpx;background:white;box-shadow:0px -3px 8px #AAAAAA" class="align-middle">
+    <image style="width:40rpx;height:36rpx;margin-left:15%;float:left" src="{{heart}}" bindtap='likeArticle'></image>
+    <text style="float:left;padding-left:20rpx;color:#999999;font-size:40rpx">{{like_number}}</text>
+    <button style="background:white;float:left;width:110rpx;height:90rpx;margin-left:38%" class="center">
+      <label for="btnId" style="z-index:99;" class="center">  
+        <image style="width:38rpx;height:38rpx" src="../Images/share_pho.png"></image>
+      </label>
+    </button>
+  </view>
+
+  <image wx:if="{{showShare==1}}" style="position:fixed;height:84rpx;width:290rpx;left:52%;bottom:100rpx;z-index:2" src="../Images/share_view.png">
+
+  </image>
+
+</view>

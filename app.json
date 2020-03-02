@@ -1,0 +1,71 @@
+{
+  "pages": [
+    "pages/Main/MainPage",
+    "pages/Login/LoginPage",
+    "pages/ChooseLocation/ChooseLocationPage",
+    "pages/OrderDetail/OrderDetail",
+    "pages/AllOrde/AllOrderPage",
+    "pages/FullLocation/FullLocationPage",
+    "pages/CalenDar/CanlenDarPage",
+    "pages/GoodsDetail/DetailPage",
+    "pages/My/MyPage",
+    "pages/PayDetail/PayDetailPage",
+    "pages/SucEvaluate/SucEvaluatePage",
+    "pages/Evaluate/EvalutePage",
+    "pages/Integray/IntegrayPage",
+    "pages/Find/FindPage",
+    "pages/EssayDetail/EssayDetailPage",
+    "pages/Share/SharePage",
+    "pages/PhoneBind/PhoneBindPage",
+    "pages/EmptyLocation/EmptyLocationPage",
+    "pages/GroupBuy/GroupBuyPage",
+    "pages/SpikeOrder/SpikeOrderPage",
+    "pages/utilChooseCity/chooseCity",
+    "pages/shopCar/index",
+    "pages/PaySuccess/PaySuccess"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTitleText": "菁棠花社",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "backgroundColor": "#ffffff",
+    "color": "#999999",
+    "selectedColor": "#000000",
+    "position": "bottom",
+    "list": [
+      {
+        "pagePath": "pages/Main/MainPage",
+        "iconPath": "pages/Images/home_origin.png",
+        "selectedIconPath": "pages/Images/home_choose.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/Find/FindPage",
+        "iconPath": "pages/Images/flower_origin.png",
+        "selectedIconPath": "pages/Images/flower_choose.png",
+        "text": "发现"
+      },
+      {
+        "pagePath": "pages/shopCar/index",
+        "iconPath": "pages/Images/shopCar_active.png",
+        "selectedIconPath": "pages/Images/shopCar.png",
+        "text": "购物车"
+      },
+      {
+        "pagePath": "pages/My/MyPage",
+        "iconPath": "pages/Images/man_origin.png",
+        "selectedIconPath": "pages/Images/man_choose.png",
+        "text": "个人中心"
+      }
+    ]
+  },
+  "plugins": {
+    "calendar": {
+      "version": "1.1.0",
+      "provider": "wx92c68dae5a8bb046"
+    }
+  }
+}

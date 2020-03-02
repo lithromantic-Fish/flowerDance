@@ -1,0 +1,96 @@
+@import "../../wxParse/wxParse.wxss";
+
+::-webkit-scrollbar{
+width: 0;
+height: 0;
+color: transparent;
+}
+
+.top{
+  position: relative;width: 100%;height: 220rpx;
+}
+
+.top image{
+  position: absolute;width: 100%;
+}
+
+.top .text1{
+  font-family: PingFang-SC-Bold;font-weight: Bold;color: #FFFFFF;
+  font-size: 48rpx;position: absolute;
+}
+
+.top .text2{
+  font-family: PingFang-SC-Regular;font-weight: Regular;color: #FFFFFF;
+  font-size: 24rpx;position: absolute;padding-top: 90rpx;
+}
+
+.second{
+  width: 100%;height: 100rpx; border-bottom: 3rpx solid #EFEFEF;
+}
+
+
+.second .commen{
+  width: 50%;height: 100%; float: left;
+}
+
+.second .commen .inside1{
+  height: 98%;border-bottom: 6rpx solid #FF8096;
+}
+
+.second .commen .inside1 text{
+  font-family: PingFang-SC-Medium;font-weight: Medium;color: #FF8096;
+  font-size: 28rpx;
+}
+
+.second .commen .inside2{
+  height: 98%;
+}
+
+.second .commen .inside2 text{
+  font-family: PingFang-SC-Medium;font-weight: Medium;color: #333333;
+  font-size: 28rpx;
+}
+
+.context{
+  margin-left: 25rpx;margin-right: 25rpx;margin-top: 34rpx;display: flex;
+}
+
+
+.context text{
+  font-family: PingFang-SC-Regular;font-weight: Regular;color:#666666;
+  font-size: 26rpx;
+}
+
+
+.every-block{
+  width: 100%;height: 110rpx;margin-top: 3rpx;background: white;
+}
+
+.every-block .bottom-line{
+  margin-left: 38rpx;margin-right: 38rpx;height: 100%;border-bottom: 3rpx solid #EFEFEF;
+  display: flex;
+}
+
+.every-block  .bottom-line .part-left{
+  height: 100%;display: flex;flex-direction: column;
+}
+
+.every-block .bottom-line .part-left .text1{
+  margin-top: 18rpx;font-family: PingFang-SC-Medium;font-weight: Medium;
+  color: #232326;font-size: 28rpx;
+}
+
+.every-block  .bottom-line .part-left .text2{
+  margin-top: 18rpx;font-family: PingFang-SC-Bold;font-weight: Bold;
+  color: #C9C9C9;font-size: 22rpx;
+}
+
+.every-block .bottom-line .part-right{
+  height: 100%;display:flex;flex:1;text-align: right;   
+}
+
+.every-block .bottom-line .part-right text{
+  flex: 1;text-align: right;font-family: PingFang-SC-Bold;font-weight: Bold;
+  color: #A2A2A2;font-size: 28rpx;
+}
+

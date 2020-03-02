@@ -1,0 +1,213 @@
+.main-style{
+  background:#F8F9F7;width:100%;
+}
+
+.main-style  .top-view{
+  height:600rpx;width:100%;overflow:hidden;position:relative;
+}
+
+.main-style  .top-view image{
+  position:absolute;height:100%;width:100%;
+}
+
+.main-style  .top-view .view-bg{
+  position:absolute;height:60rpx;width:120rpx;background:#000000;opacity:0.4;margin-top:68%;margin-left:79%;border-radius:30rpx;
+}
+
+.main-style  .top-money{
+  height:110rpx;width:100%;background:#FF899E;
+}
+
+.main-style  .top-money text{
+  font-size:70rpx;color:white;padding-left:40rpx;
+}
+
+.tw{
+  width:100%;height:120rpx;background:white;border-bottom:1px solid #F8F9F7;
+}
+
+.tw .tw-text1{
+ padding-left:40rpx;display:block;color:#232326;font-size:37rpx;width:100%;height:50%;
+ font-weight: Medium;font-family: PingFang-SC-Medium;padding-top:10rpx;
+}
+
+.tw .tw-text2{
+ padding-left:40rpx;display:block;width:100%;height:50%;color:#999999;font-size:26rpx;
+ padding-top: 10rpx;font-weight: Regular;font-family: PingFang-SC-Regular;
+}
+
+.thr{
+  width:100%;height:100rpx;background:white;
+}
+
+.thr image{
+  width:40rpx;margin-left:40rpx;
+}
+
+.thr text{
+  color:#999999;font-size:30rpx;padding-left:10rpx;font-weight: Regular;
+  font-family: PingFang-SC-Regular;
+}
+
+.four{
+  height:90rpx;width:100%;background:white;margin-top:40rpx;display:flex;align-items:center;
+}
+
+.four text{
+  font-size:32rpx;color:#AAAAAA;padding-left:40rpx;
+}
+
+.four image{
+  width:14rpx;margin-left:auto;margin-right:30rpx;
+}
+
+.last-image{
+  margin-top:40rpx;width:100%;
+}
+
+.last-view{
+  width:100%;height:120rpx;position:fixed;bottom:0rpx;left:0rpx;background:white;
+}
+
+.last-view .view-left{
+  width:45%;height:100%;float:left;
+}
+
+.last-view .view-left .left-exm{
+  width:28%;height:100%;float:left;margin-left:3%;
+}
+
+.last-view .view-left .left-exm .exm-top{
+  height:70%;width:100%;
+}
+
+
+.last-view .view-left .left-exm .exm-top image{
+  height:43rpx;width:43rpx;
+}
+
+.last-view .view-left .left-exm .exm-text{
+  height:30%;width:100%;
+}
+
+.last-view .view-left .left-exm .exm-text text{
+  font-size:30rpx;opacity:0.8;
+}
+
+.last-view .buy-now{
+  width:50%;height:100%;background:#FF899E;float:left;
+}
+
+.last-view .buy-now text{
+  font-size:45rpx;color:white;
+}
+
+/* 下面为3个页面不同的样式 */
+
+.special{
+  height:120rpx;width:100%;
+}
+
+.special .spe-left{
+  width:70%;height:100%;background:#FF437F;float:left;
+}
+
+.special .spe-left .left-money{
+  width:30%;height:100%;float:left;
+}
+
+.special .spe-left .left-money text{
+ color:white;font-size:52rpx;font-weight: bold;
+}
+
+.special .spe-left .left-view{
+  width:70%;height:100%;float:left;
+}
+
+.special .spe-left .left-text{
+  width:70%;height:100%;float:left;
+}
+
+.special .spe-left .left-text .text1{
+  width:100%;height:20%;float:left;color:white;font-size:25rpx;opacity:0.7;
+}
+
+.special .spe-left .left-text .text11{
+  text-decoration:line-through;
+}
+
+.special .spe-left .left-text text{
+  letter-spacing: 5rpx;
+}
+
+.special .spe-left .left-text .text2{
+  width:100%;height:20%;float:left;font-size:25rpx;padding-top:40rpx;color:white;
+}
+
+.special .spe-right{
+  width:30%;height:100%;background:#FFEAE9;float:left;
+}
+
+.special .spe-right .right-top{
+  height:30%;width:100%;float:left;
+}
+
+.special .spe-right .right-top text{
+  color:#F1305E;font-size:28rpx;font-weight: Medium;
+  font-family: PingFang-SC-Medium;
+}
+
+.special .spe-right .right-last{
+  height:70%;width:100%;float:left;
+}
+
+.special .spe-right .right-last .last-one{
+  width:20%;height:70%;float:left;margin-top:5%; border-radius:10rpx;background:#FF437F;
+}
+
+.special .spe-right .right-last .last-one text{
+  font-size:28rpx;color:#FF437F;
+}
+
+.special .spe-right .right-last .last-two{
+  width:10%;height:70%;float:left;margin-top:5%;
+}
+
+.special .spe-right .right-last .last-two text{
+  font-size:28rpx;color:#FF437F;
+}
+.last-view{
+  width:100%;height:120rpx;position:fixed;bottom:0rpx;left:0rpx;background:white;
+}
+
+.last-view .view-left{
+  width:45%;height:100%;float:left;
+}
+
+.last-view .view-right{
+  width:55%;height:100%;background:#FF899E;float:left;
+}
+
+.last-view .view-right .right-one{
+ width:50%;height:100%;float:left;background:#FF899E;
+}
+
+.view-right .right-one .one-view{
+  height:50%;width:100%;
+}
+
+.last-view .view-right .right-one .one-view text{
+  font-size:40rpx;color:white;padding-top:10rpx;
+}
+
+.view-right .right-one .two-view{
+  height:50%;width:100%;
+}
+
+.view-right .right-one .two-view text{
+  font-size:35rpx;color:white;padding-bottom:10rpx;
+}
+
+
+
+

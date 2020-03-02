@@ -1,0 +1,18 @@
+<view class="top-line"></view>
+
+<view class="wide">
+  <textarea class="wide-textarea" placeholder='请输入评价...' placeholder-class='holder-style' bindinput='getWords' maxlength='100'></textarea>
+  <view class="count center">
+    <text class="text1">{{textLen}}/100</text>
+  </view>
+</view>
+
+<view class="btn-out center" bindtap='Evalute'>   
+  <text>发表评论</text>
+</view>
+
+
+<!-- 这个是弹框提示 -->
+<view style="position:fixed;width:50%;height:100rpx;left:25%;top:45%;background:#5C5C5C;display:{{display}}" class="center">
+  <text style="color:white;font-size:31rpx;" class="commen-font-size">{{showMessage}}</text>
+</view>

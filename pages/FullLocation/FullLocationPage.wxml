@@ -1,0 +1,86 @@
+<view style="width:100%;height:{{height}};background:#F8F9F7">
+  <view style="width:100%;height:120rpx;background:white;border-top:1px solid #DDDDDD;border-bottom:1px solid #F2F2F2">
+    <view style="float:left;width:25%;height:100%;" class="center">
+      <text style="color:#333333;font-size:28rpx;color:black;" class="commen-font-style">联系人</text>
+    </view>
+    <view style="float:left;width:75%;height:100%;" class="center">
+      <input style="width:100%;height:80%;font-size:28rpx;color:#333333" placeholder='请输入收货人姓名' placeholder-style='color:#C9C9CF;font-size:34rpx' placeholder-class='commen-font-style' value="{{addrId?addrName:''}}" bindinput="addrName"></input>
+    </view>
+  </view>
+
+  <view style="width:100%;height:120rpx;background:white;border-bottom:1px solid #F2F2F2">
+    <view style="float:left;width:25%;height:100%;" class="center">
+      <text style="color:#333333;font-size:28rpx;color:black;" class="commen-font-style">手机号</text>
+    </view>
+    <view style="float:left;width:75%;height:100%;" class="center">
+      <input style="width:100%;height:80%;font-size:28rpx;color:#333333" placeholder='请输入手机号码' placeholder-style='color:#C9C9CF;font-size:34rpx' placeholder-class='commen-font-style' bindinput='addrMobile' value="{{addrId?addrMobile:''}}"></input>
+    </view>
+  </view>
+
+  <view style="width:100%;height:120rpx;background:white;border-bottom:1px solid #F2F2F2">
+    <view style="float:left;width:25%;height:100%;" class="center">
+      <text style="color:#333333;font-size:28rpx;color:black;" class="commen-font-style">省市区</text>
+    </view>
+    <view style="float:left;width:75%;height:100%;" class="center">
+      <input bindtap='showAddr' style="width:100%;height:80%;font-size:28rpx;color:#333333" placeholder='请选择收货地区' placeholder-style='color:#C9C9CF;font-size:28rpx' placeholder-class='commen-font-style' value="{{locationMain}}" bindinput="addrMain" disabled='disabled'></input>
+      <!-- value="{{addrId?addrBig:''}}" -->
+    </view>
+  </view>
+
+  <view style="width:100%;height:220rpx;background:white">
+    <input style="width:84%;height:100%;margin-left:6%;padding-top:20rpx;font-size:28rpx" placeholder='请输入详细地址' placeholder-style='font-bold:Medium;font-family:PingFang-SC-Medium;color:#C9C9CF' bindinput="addrSmall" value="{{addrId?addrSmall:''}}"></input>
+  </view>
+
+  <view style="width:100%;height:100rpx;background:white;margin-top:12rpx;" class="center" bindtap='saveAddr'>
+    <text style="color:#333333;font-size:30rpx" class="commen-font-style">保存</text>
+  </view>
+</view>
+
+<!-- 错误信息的提示框 -->
+<view style="background:white;position:fixed;width:50%;height:100rpx;left:25%;top:45%;background:#5C5C5C;display:{{display}}" class="center">
+  <text style="color:white;font-size:31rpx;" class="commen-font-size">{{showMessage}}</text>
+</view>
+
+<view wx:if="{{showLocation==1}}" class="location-bottom" style="height:{{windowHeight}}">
+  <view class="init">
+    <view class="top center">
+      <text>收货地区</text>
+      <image class="top-image" src="../Images/delPng.png" bindtap='hideAddr'></image>
+    </view>
+    <view class="middle">
+      <picker-view indicator-style="height: 50px;" style="float:left;width:33%; height: 300rpx;" bindchange='chooseProvince' value="{{provinceValue}}">
+        <picker-view-column>
+          <view style="line-height: 50px;font-size:32rpx;" class="center">请选择</view>
+          <block wx:for="{{provinceList}}" wx:for-item="items" wx:key="{{index}}">
+            <view style="line-height: 50px;font-size:32rpx;" class="center">{{items.region_name}}</view>
+          </block>
+        </picker-view-column>
+      </picker-view>
+
+
+      <picker-view indicator-style="height: 50px;" style="float:left;width:33%; height: 300rpx;" bindchange='chooseCity' value="{{cityValue}}">
+        <picker-view-column>
+          <view style="line-height: 50px;font-size:32rpx" class="center">请选择</view>
+          <block wx:for="{{cityList}}" wx:for-item="items" wx:key="{{index}}">
+            <view style="line-height: 50px;font-size:32rpx" class="center">{{items.region_name}}</view>
+          </block>
+        </picker-view-column>
+      </picker-view>
+
+
+      <picker-view indicator-style="height: 50px;" style="float:left;width:33%; height: 300rpx;" bindchange='chooseDistrict' value="{{districtValue}}">
+        <picker-view-column>
+          <view style="line-height: 50px;font-size:32rpx" class="center">请选择</view>
+          <block wx:for="{{districtList}}" wx:for-item="items" wx:key="{{index}}">
+            <view style="line-height: 50px;font-size:32rpx" class="center">{{items.region_name}}</view>
+          </block>
+        </picker-view-column>
+      </picker-view>
+    </view>
+    <view class="bottom center">
+      <view class="btn center" bindtap='confirmLocation'>
+        <text>完成</text>
+      </view>
+    </view>
+  </view>
+</view>

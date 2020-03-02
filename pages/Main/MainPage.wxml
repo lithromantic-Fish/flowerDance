@@ -1,0 +1,370 @@
+<scroll-view scroll-x="true"  style="white-space: nowrap;height:80rpx;"  scroll-into-view='{{toIndex}}'>
+  <view style="width: 15%; height: 100%;display:inline-block" data-lockerid='-1:-1' bindtap='topClick' id='top11'>
+    <view style="height:100%;width:100%;" class="center">
+      <view class="{{topChoose==-1?'main-top2':'main-top1'}}">
+        推荐
+      </view>
+    </view>
+  </view>
+  <block wx:for="{{catList}}" wx:for-item="items" wx:key="{{index}}">
+    <view style="width: 20%; height: 100%;display:inline-block" id="top{{index}}" data-lockerid='{{items.cat_id}}:{{index}}' bindtap='topClick'>
+      <view style="height:100%;width:100%;" class="center">
+        <view class="{{topChoose==index?'main-top2':'main-top1'}}">
+          {{items.cat_name}}
+        </view>
+      </view>
+    </view>
+  </block>
+
+</scroll-view>
+
+<swiper style="height: {{clientHeight?clientHeight+'px':'auto'}}" current="{{currentTab}}" duration="200" bindchange="swiperchange">
+  <swiper-item>
+    <scroll-view scroll-y="true" style="height: {{clientHeight?clientHeight+'px':'auto'}}">
+
+      <swiper class="index-swiper-head" id="scollImage" indicator-dots="true" autoplay="true" interval="5000" indicator-color="rgba(255, 255, 255, 0.5)" indicator-active-color="rgba(255, 255, 255, 1)">
+        <block wx:for="{{scrollImage}}" wx:for-item="items" wx:key="{{index}}">
+          <swiper-item>
+            <image bindtap='clickImg' data-imgsrc="{{items.type}}:{{items.value}}" src="{{items.img_url}}" style="width:100%" mode='aspectFill' ></image>
+          </swiper-item>
+        </block>
+      </swiper>
+
+      <!-- <view class="index-second">
+        <block wx:for="{{orderArrive}}" wx:for-item="items" wx:key="{{index}}">
+          <view wx:if="{{items.type==1}}" style="position:relative;width:4%;height:100%;background:white;float:left"></view>
+
+          <view class="index-getflower" style="position:relative" data-lockerid='{{items.type}}' bindtap='toRight'>
+            <image style="position:absolute" src='{{items.img}}' class="commen-img "></image>
+            <view class="center block-get">
+              <text>{{items.name}}</text>
+            </view>
+          </view>
+        </block>
+
+      </view> -->
+
+
+      <view wx:if="{{showGroup==1}}" class="index-flash" style="margin-top:30rpx">
+        <view class="flash-top">
+          <text class="top-f spacing-five">限时团购</text>
+          <text class="top-s spacing-three" decode="{{true}}">&nbsp;/&nbsp;FLASH&nbsp;SALE</text>
+          <text class="top-t spacing-five">{{groupIndex}}</text>
+          <text class="top-fo spacing-five">/{{groupLength}}</text>
+        </view>
+
+        <swiper style="width:100%;height:200rpx;" bindchange="changeEnd" data-set="{{items.goods_id}}">
+
+          <block wx:for="{{groupList}}" wx:for-item="items" wx:key="{{index}}">
+            <view data-lockerid='{{items.act_id}}' bindtap="toGroupBuyPage">
+              <swiper-item class="flash-bottom">
+
+                <view style="width:3%;height:100%;float:left">
+                </view>
+
+                <view class="bottom-left" style="overflow:hidden">
+                  <image src="{{items.goods_thumb}}" style="width:100%" mode='aspectFill'></image>
+                </view>
+
+                <view class="bottom-middle center">
+                </view>
+
+                <view class="right-part">
+                  <view class="part-radius">
+                    <image class="radius-image" src="../Images/clock.png"></image>
+                    <!-- <text>{{items.time}}</text> -->
+                    <text>{{items.group_time}}</text>
+                  </view>
+                  <view class="part-text">
+                    <text class="hideMuch">{{items.act_name}}</text>
+                  </view>
+                  <view class="part-money">
+                    <text class="money-right">￥{{items.number_price}}</text>
+                    <text class="money-wrong">原价￥{{items.shop_price}}</text>
+                  </view>
+                </view>
+              </swiper-item>
+            </view>
+          </block>
+        </swiper>
+      </view>
+
+      <view wx:if="{{showSpike==1}}" class="index-flash" style="margin-top:20rpx">
+        <view class="flash-top">
+          <text class="top-f spacing-five">秒杀</text>
+          <text class="top-s spacing-three" decode="{{true}}">&nbsp;/&nbsp;SPIKE</text>
+          <text class="top-t spacing-five">{{spikeIndex}}</text>
+          <text class="top-fo spacing-five">/{{spikeLength}}</text>
+        </view>
+
+        <swiper style="width:100%;height:200rpx;" bindchange="spikeChangeEnd">
+          <block wx:for="{{spikeList}}" wx:for-item="items" wx:key="{{index}}">
+            <view data-lockerid='{{items.sec_id}}' bindtap="toSpikePage">
+              <swiper-item class="flash-bottom">
+                <view style="width:3%;height:100%;float:left">
+                </view>
+
+                <view class="bottom-left center">
+                  <image src='{{items.goods_thumb}}' style="width:100%" mode='aspectFill'></image>
+                </view>
+
+                <view class="bottom-middle center">
+                  <!-- <text style="color:#989898;font-size:35rpx;font-weight:middle;font-family:PingFang-SC-Bold">已抢{{items.sec_id}}</text> -->
+                </view>
+
+                <view class="right-part">
+                  <view class="part-radius">
+                    <image class="radius-image" src="../Images/clock.png"></image>
+                    <!-- <text>{{items.time}}</text> -->
+                    <text>{{items.spikeTime}}</text>
+                  </view>
+                  <view class="part-text">
+                    <text class="hideMuch">{{items.goods_name}}</text>
+                  </view>
+                  <view class="part-money">
+                    <text class="money-right">￥{{items.shop_price}}</text>
+                    <text class="money-wrong">原价￥{{items.sec_price}}</text>
+                  </view>
+                </view>
+              </swiper-item>
+            </view>
+          </block>
+        </swiper>
+      </view>
+
+      <view wx:if="{{showNew==1}}" class="index-spike">
+        <view class="flash-top" style="width:100%;margin-left:0px">
+          <text class="top-f spacing-five">新品专区</text>
+          <text class="top-s spacing-three" decode="{{true}}">&nbsp;/&nbsp;NEW</text>
+          <text class="top-t spacing-five">{{newIndex}}</text>
+          <text class="top-fo spacing-five">/{{newLength}}</text>
+        </view>
+        <view class="spike-bottom">
+          <swiper class="spike-bottom" next-margin='100rpx' bindchange="newChangeEnd">
+            <block wx:for="{{newList}}" wx:for-item="items" wx:key="{{index}}">
+              <swiper-item>
+                <image class="spike-img" bindtap='clickImg' data-imgsrc="1:{{items.goods_id}}" src="{{items.goods_thumb}}" mode='aspectFill'></image>
+                <text class="spike-text1 hideMuch">{{items.goods_name}}</text>
+                <text class="spike-text2 hideMuch">{{items.goods_brief}}</text>
+                <text class="spike-text3 hideMuch">￥{{items.shop_price}}</text>
+              </swiper-item>
+            </block>
+          </swiper>
+        </view>
+      </view>
+
+      <view wx:if="{{showHot==1}}" class="index-spike">
+        <view class="flash-top" style="width:100%;margin-left:0px">
+          <text class="top-f spacing-five">热卖专区</text>
+          <text class="top-s spacing-three" decode="{{true}}">&nbsp;/&nbsp;HOT</text>
+          <text class="top-t spacing-five">{{hotIndex}}</text>
+          <text class="top-fo spacing-five">/{{hotLength}}</text>
+        </view>
+        <view class="spike-bottom">
+          <swiper class="spike-bottom" next-margin='100rpx' bindchange="hotChangeEnd">
+            <block wx:for="{{hotList}}" wx:for-item="items" wx:key="{{index}}">
+              <swiper-item>
+                <image class="spike-img" src="{{items.goods_thumb}}" bindtap='clickImg' data-imgsrc="1:{{items.goods_id}}" mode='aspectFill'></image>
+                <text class="spike-text1 hideMuch">{{items.goods_name}}</text>
+                <text class="spike-text2 hideMuch">{{items.goods_brief}}</text>
+                <text class="spike-text3 hideMuch">￥{{items.shop_price}}</text>
+              </swiper-item>
+            </block>
+          </swiper>
+        </view>
+      </view>
+
+      <view wx:if="{{showFind==1}}" class="index-spike">
+        <view class="flash-top" style="width:100%;margin-left:0px">
+          <text class="top-f spacing-five">发现好物</text>
+          <text class="top-s spacing-three" decode="{{true}}">&nbsp;/&nbsp;FIND</text>
+          <text class="top-t spacing-five">{{findIndex}}</text>
+          <text class="top-fo spacing-five">/{{findLength}}</text>
+        </view>
+        <view class="spike-bottom">
+          <swiper class="spike-bottom" next-margin='100rpx' bindchange="findChangeEnd">
+            <block wx:for="{{findList}}" wx:for-item="items" wx:key="{{index}}">
+              <swiper-item>
+                <image class="spike-img" bindtap='clickImg' data-imgsrc="1:{{items.goods_id}}" src="{{items.goods_thumb}}" mode='aspectFill'></image>
+                <text class="spike-text1 hideMuch">{{items.goods_name}}</text>
+                <text class="spike-text2 hideMuch">{{items.goods_brief}}</text>
+                <text class="spike-text3 hideMuch">￥{{items.shop_price}}</text>
+              </swiper-item>
+            </block>
+          </swiper>
+        </view>
+      </view>
+      <view style="width:100%;height:100rpx"></view>
+
+    </scroll-view>
+  </swiper-item>
+
+  <swiper-item>
+    <scroll-view bindscrolltolower="toLower" scroll-y="true" style="height: {{clientHeight?clientHeight+'px':'auto'}}">
+
+      <block wx:for="{{solo}}" wx:for-item="items" wx:key="{{index}}">
+        <view class="bottom-view" data-lockerid='{{items.id}}'>
+          <image class="bottom-img" bindtap='clickImg' data-imgsrc="1:{{items.goods_id}}:{{items.today_id}}:{{items.sub_id}}" mode='aspectFill' src='{{items.goods_thumb}}'></image>
+          <text class="bottom-text1 no-line">{{items.goods_name}} </text>
+          <text class="bottom-text3 no-line">{{items.goods_brief}}</text>
+          <text class="bottom-text2">￥{{items.shop_price}}</text>
+          <view wx:if="{{items.is_hot}}" style="width:20%;float:left;border:1px solid #FF899E;margin-top:10rpx" class="center">
+            <text style="color:#FF6D87;font-size:20rpx;font-family:PingFang-SC-Regular;font-weight:Regular;">热销</text>
+          </view>
+          <view wx:if="{{items.is_new&&items.is_hot}}" style="margin-top:10rpx;width:20%;float:left;border:1px solid #FF899E;margin-left:10%" class="center">
+            <text style="color:#FF6D87;font-size:20rpx;font-family:PingFang-SC-Regular;font-weight:Regular;">新品</text>
+          </view>
+          <view wx:if="{{items.is_new&&!items.is_hot}}" style="margin-top:10rpx;width:20%;float:left;border:1px solid #FF899E" class="center">
+            <text style="color:#FF6D87;font-size:20rpx;font-family:PingFang-SC-Regular;font-weight:Regular;">新品</text>
+          </view>
+        </view>
+      </block>
+    </scroll-view>
+  </swiper-item>
+
+  <swiper-item>
+    <scroll-view scroll-y="true" bindscrolltolower="toLower" style="height: {{clientHeight?clientHeight+'px':'auto'}}">
+
+      <block wx:for="{{fix}}" wx:for-item="items" wx:key="{{index}}">
+        <view class="bottom-view" data-lockerid='{{items.id}}'>
+          <image class="bottom-img" mode='aspectFill' bindtap='clickImg' data-imgsrc="1:{{items.goods_id}}:{{items.today_id}}:{{items.sub_id}}" src='{{items.goods_thumb}}'></image>
+          <text class="bottom-text1 no-line">{{items.goods_name}} </text>
+          <text class="bottom-text3 no-line">{{items.goods_brief}}</text>
+          <text class="bottom-text2">￥{{items.shop_price}}</text>
+          <view wx:if="{{items.is_hot}}" style="width:20%;float:left;border:1px solid #FF899E;margin-top:10rpx" class="center">
+            <text style="color:#FF6D87;font-size:20rpx;font-family:PingFang-SC-Regular;font-weight:Regular;">热销</text>
+          </view>
+          <view wx:if="{{items.is_new&&items.is_hot}}" style="margin-top:10rpx;width:20%;float:left;border:1px solid #FF899E;margin-left:10%" class="center">
+            <text style="color:#FF6D87;font-size:20rpx;font-family:PingFang-SC-Regular;font-weight:Regular;">新品</text>
+          </view>
+          <view wx:if="{{items.is_new&&!items.is_hot}}" style="margin-top:10rpx;width:20%;float:left;border:1px solid #FF899E" class="center">
+            <text style="color:#FF6D87;font-size:20rpx;font-family:PingFang-SC-Regular;font-weight:Regular;">新品</text>
+          </view>
+        </view>
+      </block>
+    </scroll-view>
+  </swiper-item>
+
+  <swiper-item>
+    <scroll-view scroll-y="true" bindscrolltolower="toLower" style="height: {{clientHeight?clientHeight+'px':'auto'}}">
+
+      <block wx:for="{{mini}}" wx:for-item="items" wx:key="{{index}}">
+        <view class="bottom-view" data-lockerid='{{items.id}}'>
+          <image class="bottom-img" mode='aspectFill' bindtap='clickImg' data-imgsrc="1:{{items.goods_id}}:{{items.today_id}}:{{items.sub_id}}" src='{{items.goods_thumb}}'></image>
+          <text class="bottom-text1 no-line">{{items.goods_name}} </text>
+          <text class="bottom-text3 no-line">{{items.goods_brief}}</text>
+          <text class="bottom-text2">￥{{items.shop_price}}</text>
+          <view wx:if="{{items.is_hot}}" style="width:20%;float:left;border:1px solid #FF899E;margin-top:10rpx" class="center">
+            <text style="color:#FF6D87;font-size:20rpx;font-family:PingFang-SC-Regular;font-weight:Regular;">热销</text>
+          </view>
+          <view wx:if="{{items.is_new&&items.is_hot}}" style="margin-top:10rpx;width:20%;float:left;border:1px solid #FF899E;margin-left:10%" class="center">
+            <text style="color:#FF6D87;font-size:20rpx;font-family:PingFang-SC-Regular;font-weight:Regular;">新品</text>
+          </view>
+          <view wx:if="{{items.is_new&&!items.is_hot}}" style="margin-top:10rpx;width:20%;float:left;border:1px solid #FF899E" class="center">
+            <text style="color:#FF6D87;font-size:20rpx;font-family:PingFang-SC-Regular;font-weight:Regular;">新品</text>
+          </view>
+        </view>
+      </block>
+    </scroll-view>
+  </swiper-item>
+
+
+  <swiper-item>
+    <scroll-view scroll-y="true" bindscrolltolower="toLower" style="height: {{clientHeight?clientHeight+'px':'auto'}}">
+
+      <block wx:for="{{gift}}" wx:for-item="items" wx:key="{{index}}">
+        <view class="bottom-view" data-lockerid='{{items.id}}'>
+          <image class="bottom-img" mode='aspectFill' bindtap='clickImg' data-imgsrc="1:{{items.goods_id}}:{{items.today_id}}:{{items.sub_id}}" src='{{items.goods_thumb}}'></image>
+          <text class="bottom-text1 no-line">{{items.goods_name}} </text>
+          <text class="bottom-text3 no-line">{{items.goods_brief}}</text>
+          <text class="bottom-text2">￥{{items.shop_price}}</text>
+          <view wx:if="{{items.is_hot}}" style="width:20%;float:left;border:1px solid #FF899E;margin-top:10rpx" class="center">
+            <text style="color:#FF6D87;font-size:20rpx;font-family:PingFang-SC-Regular;font-weight:Regular;">热销</text>
+          </view>
+          <view wx:if="{{items.is_new&&items.is_hot}}" style="margin-top:10rpx;width:20%;float:left;border:1px solid #FF899E;margin-left:10%" class="center">
+            <text style="color:#FF6D87;font-size:20rpx;font-family:PingFang-SC-Regular;font-weight:Regular;">新品</text>
+          </view>
+          <view wx:if="{{items.is_new&&!items.is_hot}}" style="margin-top:10rpx;width:20%;float:left;border:1px solid #FF899E" class="center">
+            <text style="color:#FF6D87;font-size:20rpx;font-family:PingFang-SC-Regular;font-weight:Regular;">新品</text>
+          </view>
+        </view>
+      </block>
+    </scroll-view>
+  </swiper-item>
+
+  <swiper-item>
+    <scroll-view scroll-y="true" bindscrolltolower="toLower" style="height: {{clientHeight?clientHeight+'px':'auto'}}">
+
+      <block wx:for="{{bottle}}" wx:for-item="items" wx:key="{{index}}">
+        <view class="bottom-view"  data-lockerid='{{items.id}}'>
+          <image class="bottom-img" mode='aspectFill' bindtap='clickImg' data-imgsrc="1:{{items.goods_id}}:{{items.today_id}}:{{items.sub_id}}" src='{{items.goods_thumb}}'></image>
+          <text class="bottom-text1 no-line">{{items.goods_name}} </text>
+          <text class="bottom-text3 no-line">{{items.goods_brief}}</text>
+          <text class="bottom-text2">￥{{items.shop_price}}</text>
+          <view wx:if="{{items.is_hot}}" style="width:20%;float:left;border:1px solid #FF899E;margin-top:10rpx" class="center">
+            <text style="color:#FF6D87;font-size:20rpx;font-family:PingFang-SC-Regular;font-weight:Regular;">热销</text>
+          </view>
+          <view wx:if="{{items.is_new&&items.is_hot}}" style="margin-top:10rpx;width:20%;float:left;border:1px solid #FF899E;margin-left:10%" class="center">
+            <text style="color:#FF6D87;font-size:20rpx;font-family:PingFang-SC-Regular;font-weight:Regular;">新品</text>
+          </view>
+          <view wx:if="{{items.is_new&&!items.is_hot}}" style="margin-top:10rpx;width:20%;float:left;border:1px solid #FF899E" class="center">
+            <text style="color:#FF6D87;font-size:20rpx;font-family:PingFang-SC-Regular;font-weight:Regular;">新品</text>
+          </view>
+        </view>
+      </block>
+    </scroll-view>
+  </swiper-item>
+
+  <swiper-item>
+    <scroll-view scroll-y="true" bindscrolltolower="toLower" style="height: {{clientHeight?clientHeight+'px':'auto'}}">
+
+      <block wx:for="{{ff}}" wx:for-item="items" wx:key="{{index}}">
+        <view class="bottom-view" data-lockerid='{{items.id}}'>
+          <image class="bottom-img" mode='aspectFill' bindtap='clickImg' data-imgsrc="1:{{items.goods_id}}:{{items.today_id}}:{{items.sub_id}}" src='{{items.goods_thumb}}'></image>
+          <text class="bottom-text1 no-line">{{items.goods_name}} </text>
+          <text class="bottom-text3 no-line">{{items.goods_brief}}</text>
+          <text class="bottom-text2">￥{{items.shop_price}}</text>
+          <view wx:if="{{items.is_hot}}" style="width:20%;float:left;border:1px solid #FF899E;margin-top:10rpx" class="center">
+            <text style="color:#FF6D87;font-size:20rpx;font-family:PingFang-SC-Regular;font-weight:Regular;">热销</text>
+          </view>
+          <view wx:if="{{items.is_new&&items.is_hot}}" style="margin-top:10rpx;width:20%;float:left;border:1px solid #FF899E;margin-left:10%" class="center">
+            <text style="color:#FF6D87;font-size:20rpx;font-family:PingFang-SC-Regular;font-weight:Regular;">新品</text>
+          </view>
+          <view wx:if="{{items.is_new&&!items.is_hot}}" style="margin-top:10rpx;width:20%;float:left;border:1px solid #FF899E" class="center">
+            <text style="color:#FF6D87;font-size:20rpx;font-family:PingFang-SC-Regular;font-weight:Regular;">新品</text>
+          </view>
+        </view>
+      </block>
+    </scroll-view>
+  </swiper-item>
+
+  <swiper-item>
+    <scroll-view scroll-y="true" bindscrolltolower="toLower" style="height: {{clientHeight?clientHeight+'px':'auto'}}">
+
+      <block wx:for="{{green}}" wx:for-item="items" wx:key="{{index}}">
+        <view class="bottom-view" data-lockerid='{{items.id}}'>
+          <image class="bottom-img" mode='aspectFill' bindtap='clickImg' data-imgsrc="1:{{items.goods_id}}:{{items.today_id}}:{{items.sub_id}}" src='{{items.goods_thumb}}'></image>
+          <text class="bottom-text1 no-line">{{items.goods_name}} </text>
+          <text class="bottom-text3 no-line">{{items.goods_brief}}</text>
+          <text class="bottom-text2">￥{{items.shop_price}}</text>
+          <view wx:if="{{items.is_hot}}" style="width:20%;float:left;border:1px solid #FF899E;margin-top:10rpx" class="center">
+            <text style="color:#FF6D87;font-size:20rpx;font-family:PingFang-SC-Regular;font-weight:Regular;">热销</text>
+          </view>
+
+          
+          <view wx:if="{{items.is_new&&items.is_hot}}" style="margin-top:10rpx;width:20%;float:left;border:1px solid #FF899E;margin-left:10%" class="center">
+            <text style="color:#FF6D87;font-size:20rpx;font-family:PingFang-SC-Regular;font-weight:Regular;">新品</text>
+          </view>
+          <view wx:if="{{items.is_new&&!items.is_hot}}" style="margin-top:10rpx;width:20%;float:left;border:1px solid #FF899E" class="center">
+            <text style="color:#FF6D87;font-size:20rpx;font-family:PingFang-SC-Regular;font-weight:Regular;">新品</text>
+          </view>
+        </view>
+      </block>
+    </scroll-view>
+  </swiper-item>
+
+</swiper>
+
+<view style="position:fixed;width:50%;height:100rpx;left:25%;top:45%;background:#5C5C5C;display:{{display}}" class="center">
+  <text style="color:white;font-size:31rpx;" class="commen-font-size">{{showMessage}}</text>
+</view>

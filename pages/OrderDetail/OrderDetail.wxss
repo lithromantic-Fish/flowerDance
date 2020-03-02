@@ -1,0 +1,252 @@
+page {
+  background-color: #F8F9F7;
+}
+
+.top-img{
+  width:100%;position: relative;height: 136rpx;
+}
+
+.top-img .bg-image{
+  position: absolute;width:100%;
+}
+
+.top-img .text1{
+  display: block; margin-left:38rpx;margin-top: 30rpx;float: left;width:100%;position: absolute;
+  color:white;font-size: 33rpx;
+}
+
+.top-img .text2{
+  display: block; margin-left:38rpx;margin-top: 80rpx;float: left;width:100%;position: absolute;color:white;font-size: 24rpx;
+}
+
+
+.top-img .mes-top{
+  float: left;width:100%;height:50%;
+}
+
+.top-img .mes-bottom{
+  float: left;width:100%;height:50%;
+}
+
+.top-img .text11{
+  margin-left:38rpx;float: left;margin-top:15rpx;
+  color:rgba(255, 255, 255, 1);font-size: 32rpx;z-index:2;
+}
+
+.top-img .text22{
+  margin-left:38rpx;margin-bottom:15rpx;
+  color:rgba(255, 255, 255, 1);font-size: 25rpx;z-index:2;
+}
+
+.top-img .gray-image{
+  width:30rpx;height:26rpx;margin-left:16rpx;float: left;z-index:2;margin-top:15rpx;
+}
+
+
+.position{
+  width: 100%;height: 200rpx;background: white
+}
+
+.position .po-top{
+  width: 100%;height: 50%;float: left;
+}
+
+.position .po-top image{
+  width: 20rpx;height: 28rpx;margin-left: 38rpx;margin-top:7rpx;
+}
+
+.position .po-top .text1{
+  margin-left: 28rpx;font-family: PingFang-SC-Bold;color: #333333;
+  font-size: 33rpx;
+}
+
+.position .po-top .text2{
+  margin-left: 62rpx;font-family: PingFang-SC-Bold;
+  color: #333333;font-size: 33rpx;
+}
+
+.position .po-bottom{
+  margin-left:84rpx;height: 50%;float: left;margin-right: 38rpx;
+}
+
+.position .po-bottom .text3{
+  width: 100%;font-family: PingFang-SC-Medium;font-weight: Medium;
+  color: #333333;font-size: 26rpx;
+}
+
+.goods{
+  width: 100%;background: white;height: 218rpx;margin-top: 5rpx;
+}
+
+.goods .goods-main{
+  margin-left: 38rpx;margin-right: 38rpx;height: 100%;
+}
+
+.goods .goods-main .view1{
+  height: 100%;width: 25%;float: left;
+}
+
+.goods .goods-main .view1 image{
+  width: 120rpx;height: 120prx;
+}
+
+.goods .goods-main .view2{
+  height: 100%;width: 55%;float: left;
+}
+
+.goods .goods-main .view2 .text1{
+  display:block;width: 100%;margin-top:62rpx;
+  font-family: PingFang-SC-Medium;font-weight: Medium;color: #333333;
+  font-size: 28rpx;
+}
+
+.goods .goods-main .view2 .text2{
+  display:block;width: 100%;margin-top:24rpx;
+  font-family: PingFang-SC-Medium;font-weight: Medium;color:#999999;
+  font-size:24rpx;
+}
+
+.goods .goods-main .view3{
+  height: 100%;width: 20%;float: left;
+}
+
+.goods .goods-main .view3 text{
+  flex: 1;text-align: right;font-family: PingFang-SC-Bold;font-weight: Bold;
+  color: #333333;font-size:26rpx;
+}
+
+.phoneConnect{
+  width: 100%;height: 90rpx;background: white;margin-top: 5rpx;
+}
+
+.phoneConnect image{
+  width: 28rpx;
+}
+
+.phoneConnect text{
+  margin-left: 28rpx;font-family: PingFang-SC-Medium;font-weight: Medium;
+  color: #333333;font-size: 26rpx;
+}
+
+.order-number{
+  width: 100%;height: 180rpx;background: white;margin-top: 20rpx;
+}
+
+.order-number .top{
+  width: 100%;height:50%;
+}
+
+.order-number  .number{
+  margin-left: 38rpx;font-family: PingFang-SC-Medium;font-weight: Medium;
+  color: #333333;font-size: 26rpx;
+}
+
+.number2{
+  margin-left: 38rpx;font-family: PingFang-SC-Medium;font-weight: Medium;
+  color: #333333;font-size: 26rpx;
+}
+
+.order-number  .number-value{
+  font-family: PingFang-SC-Medium;font-weight: Medium;
+  color: #999999;font-size: 26rpx;
+}
+
+.number-value2{
+  font-family: PingFang-SC-Medium;font-weight: Medium;
+  color: #999999;font-size: 26rpx;
+}
+
+.order-number  .number-view{
+  height: 28rpx;width: 80rpx;border-radius: 30rpx;font-family: PingFang-SC-Medium;
+  font-weight: Medium;color: #333333;font-size:20rpx;margin-left: 22rpx;
+  border:2rpx solid #AAAAAA;
+}
+
+.number-view2{
+  height: 28rpx;width: 80rpx;border-radius: 30rpx;font-family: PingFang-SC-Medium;
+  font-weight: Medium;color: #333333;font-size:20rpx;margin-left: 22rpx;
+  border:2rpx solid #AAAAAA;
+}
+
+
+.order-number .bottom{
+  width: 100%;height:50%;
+}
+
+.pay-way{
+  width: 100%;height: 90rpx;margin-top: 5rpx;background: white;
+}
+
+.pay-way .text1{
+  margin-left: 38rpx;font-family: PingFang-SC-Medium;font-weight: Medium;
+  color: #333333;font-size:26rpx;
+}
+
+
+.pay-way .text2{
+  font-family: PingFang-SC-Medium;font-weight: Medium;
+  color: #999999;font-size: 26rpx;
+}
+
+.price{
+  width: 100%;height: 180rpx;margin-top: 20rpx;background: white;
+}
+
+.price .top{
+  margin-left:38rpx;margin-right: 38rpx;height: 33%;
+}
+
+.price .text1{
+  font-family: PingFang-SC-Regular;font-weight: Regular;color: #333333;
+  font-size: 26rpx; 
+}
+
+.price .text2{
+  font-family: PingFang-SC-Medium;font-weight: Medium;color: #333333;
+  font-size: 26rpx;flex:1;text-align: right;   
+}
+
+.pay{
+  width: 100%;height: 90rpx;background: white;margin-top: 5rpx;
+}
+
+.pay .pay-main{
+  margin-right: 38rpx;flex:1;text-align: right;
+}
+
+.pay .pay-main .text1{
+  font-family: PingFang-SC-Medium;font-weight: Medium;color: #333333;
+  font-size: 24rpx;
+}
+
+.pay .pay-main .text2{
+  font-family: PingFang-SC-Medium;font-weight: Medium;color: #FF91A5;
+  font-size: 28rpx;
+}
+
+.view-white{
+  width: 100%;height: 120rpx;
+}
+
+.last{
+  width: 100%;height: 110rpx;background: white;position: fixed;bottom: 0rpx;left: 0rpx;
+  box-shadow: 0rpx -7rpx 7rpx RGBA(244, 245, 243, 1);
+}
+
+.last .evaluate{
+  width: 242rpx;height: 72rpx;border-radius: 36rpx;background: white;
+  border:2rpx solid rgba(255, 104, 131, 1);
+}
+
+.last .evaluate text{
+  font-weight: Medium;color: rgba(255, 104, 131, 1);font-size: 28rpx;
+}
+
+.last .evaluate2{
+  width: 242rpx;height: 72rpx;border-radius: 36rpx;background: rgba(255, 104, 131, 1);
+}
+
+.last .evaluate2 text{
+  font-weight: Medium;color:white;font-size: 28rpx;
+}
+

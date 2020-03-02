@@ -1,0 +1,58 @@
+<view class="top-menu">
+  <block wx:for="{{menu}}" wx:for-item="items" wx:key="{{index}}">
+    <view class="menu-commen" data-lockerid='{{items.text}}' bindtap='toNext'>
+      <view class="commen-view center">
+        <view class="center {{index==nowChoose?'scroll-commen1':'scroll-commen2'}}">
+          <text class="{{index==nowChoose?'menu-text1':'menu-text2'}}">{{items.text}}</text>
+        </view>
+      </view>
+    </view>
+  </block>
+</view>
+
+<block wx:for="{{goods}}" wx:for-item="items" wx:key="{{index}}">
+  <view class="orders">
+    <view class="order-inside">
+      <view class="inside-top align-middle">
+        <text class="top-order-num">订单号：{{items.order_sn}}</text>
+        <text class="top-order-status">{{items.orderstatus}}</text>
+      </view>
+      <view class="inside-middle" bindtap='toOrderDetail' data-lockerid='{{items.order_id}}'>
+        <view class="middle-left center">
+          <view class="left-img">
+            <image mode="widthFix" src="{{items.goods_thumb}}"></image>
+          </view>
+        </view>
+        <view class="middle-middle">
+          <view class="text-top">
+            <text>{{items.goods_name}}</text>
+          </view>
+          <view class="text-bottom">
+            <text>{{items.goods_brief}}</text>
+          </view>
+        </view>
+        <view class="middle-right">
+          <text>× 1</text>
+        </view>
+      </view>
+      <view class="inside-bottom align-middle">
+        <text class="pay-left">{{items.message}}</text>
+        <text class="bottom-pay">总计 <text class="pay-style">￥{{items.goods_amount}}</text></text>
+      </view>
+    </view>
+  </view>
+</block>
+
+<view wx:if="{{showEmpty==1}}">
+  <view class="empty-top center">
+    <image src="../Images/empty.png"></image>
+  </view>
+  <view class="empty-text center">
+    <text>还没有任何订单哟!</text>
+  </view>
+  <view wx:if="{{showGo==1}}" bindtap='showGo' class="empty-bottom center">
+    <view class="pink-btn center">
+      <text>去逛一逛</text>
+    </view>
+  </view>
+</view>

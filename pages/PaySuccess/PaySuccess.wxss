@@ -1,0 +1,40 @@
+.top{
+  width:100%;height:230rpx;margin-top:92rpx;
+}
+.top image{
+  width:422rpx;height:224rpx;margin-right: 122rpx;
+}
+
+.put-text{
+  width:100%;height:20rpx;margin-top:46rpx;
+}
+
+.put-text text{
+  color:#333333;font-size: 28rpx;
+}
+
+.y-top{
+    margin-top:180rpx;width:100%;
+}
+
+.see-detail{
+  background: rgba(255, 137, 158, 1);width:540rpx;height:90rpx;border-radius: 40rpx;
+}
+
+.see-detail text{
+  color:rgba(255, 255, 255, 1);font-size: 36rpx;
+}
+
+.y-bottom{
+    margin-top:76rpx;width:100%;
+}
+
+.back-home{
+  width:540rpx;height:90rpx;border: 2rpx solid rgba(255, 137, 158, 1);
+  border-radius: 40rpx;
+}
+
+.back-home text{
+  color:rgba(255, 137, 158, 1);font-size:36rpx;
+}
+
