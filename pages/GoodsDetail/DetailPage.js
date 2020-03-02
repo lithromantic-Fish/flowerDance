@@ -322,17 +322,7 @@ Page({
 
   //输入框直接改变购买数量
   getSelectNum(e){
-    if(e.detail==0){
-      wx.showModal({
-        title: '提示',
-        showCancel:false,
-        content: '数量不能为0',
-      })
-      this.setData({
-        total : 1
-      })
-      return
-    }
+
     console.log('e', e.detail)
     this.setData({
       total:e.detail
@@ -341,6 +331,15 @@ Page({
 
   // 确认加入购物车
   confirm: function () {
+    var that = this
+    if (this.data.total == 0) {
+      wx.showModal({
+        title: '提示',
+        showCancel: false,
+        content: '数量不能为0',
+      })
+      return
+    }
     console.log('attr', this.data.good_attr)
     console.log('total', this.data.total)
     //如果有商品规格选择
@@ -349,13 +348,27 @@ Page({
         "title": this.data.good_attr.title,
         "goods_id": app.globalData.goodsOrPageId ,
         "skus_id": parseInt(this.data.good_attr.id) ? parseInt(this.data.good_attr.id):0,
-        "num": this.data.total
+        "num": this.data.total,
+        "uid": app.globalData.uId||wx.getStorageSync('uId')
       }
       wx.request({
         url: app.globalData.url+'/mobile/index.php?m=flowerapi&c=order&a=cart',
         data:parms,
         success:function(res){
           console.log('res',res.data)
+          if(res.data.code==200){
+            that.popupBar()
+
+            wx.showToast({
+              icon:'none',
+              title: '添加成功,该商品在购物车等亲~',
+            })
+          }else{
+            wx.showToast({
+              icon: 'none',
+              title: res.data.msg,
+            })
+          }
         }
       })
     }

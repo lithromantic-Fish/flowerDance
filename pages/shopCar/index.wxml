@@ -12,7 +12,7 @@
             <image class='icon' wx:else src='/image/unselect.png'></image>
           </view>
           <view class='goods'>
-            <image class='good_img' src='{{item.loopImgUrl[0]}}'></image>
+            <image class='good_img' src='{{item.images}}'></image>
             <view class='good_info'>
               <view class='good_title'>
                 <text>{{item.title}}</text>
@@ -20,7 +20,7 @@
               <view class='good_price'>
                 <text class='price'>{{item.price}}</text>
                 <!-- 商品数量 -->
-                <count bind:getSelectNum="getCartCount" data-index="{{index}}" count="{{item.total}}" bind:addEvent="addNums" bind:subEvent="subNums" />
+                <count bind:getSelectNum="getCartCount" data-index="{{index}}" count="{{item.num}}" bind:addEvent="addNums" bind:subEvent="subNums" />
               </view>
             </view>
           </view>

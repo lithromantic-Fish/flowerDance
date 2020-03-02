@@ -1,4 +1,6 @@
 // pages/cart/cart.js
+var app = getApp();
+
 Page({
 
   /**
@@ -27,14 +29,28 @@ Page({
   },
 
   getCartList(){
-    wx:wx.request({
+    const that = this
+    var parm = {
+      "uid": app.globalData.uId || wx.getStorageSync('uId')
+    }
+    wx.request({
       url: app.globalData.url +'/mobile/index.php?m=flowerapi&c=order&a=cartlist',
-      data: '',
+      data: parm,
       header: {},
-      method: 'POST',
+      method: 'GET',
       dataType: 'json',
       responseType: 'text',
-      success: function(res) {},
+      success: function(res) {
+        if(res.data.code==200){
+          res.data.data.forEach(item => {
+            item.select = false
+          })
+          console.log('res',res.data.data)
+          that.setData({
+            cartList:res.data.data
+          })
+        }
+      },
       fail: function(res) {},
       complete: function(res) {},
     })
@@ -81,10 +97,10 @@ Page({
     cartList[index].select = !cartList[index].select
 
     if (cartList[index].select) {
-      totalMoney += Number(cartList[index].price * cartList[index].total);
+      totalMoney += Number(cartList[index].price * cartList[index].num);
       totalCount++;
     } else {
-      totalMoney -= Number(cartList[index].price * cartList[index].total);
+      totalMoney -= Number(cartList[index].price * cartList[index].num);
       totalCount--;
       selectAll = false
     }
@@ -111,7 +127,7 @@ Page({
       cart.select = selectAll
       // 计算总金额和商品个数
       if (cart.select) { // 如果选中计算
-        totalMoney += Number(cart.price) * cart.total
+        totalMoney += Number(cart.price) * cart.num
         totalCount++
       } else {// 全不选中置为0
         totalMoney = 0

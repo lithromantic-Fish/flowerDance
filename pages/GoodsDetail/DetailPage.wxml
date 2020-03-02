@@ -234,7 +234,7 @@
         <image style="width:26rpx;height:26rpx;float:right" bindtap='delCur' src="../Images/delPng.png"></image>
       </view>
     </view>
-        <text class="attr">规格</text>
+        <text class="attr" wx:if="{{good_sku}}">规格</text>
         <view style="display:flex;flex-wrap: wrap;">
             <view wx:for="{{good_sku.row}}" wx:for-item="item" wx:key="{{index}}">
                   <text class='{{item.isActive?"active":""}} normal' bindtap="selectAttr" data-attr="{{item}}">{{item.title}}</text>

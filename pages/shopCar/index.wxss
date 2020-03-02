@@ -24,11 +24,11 @@
   width: 100%;
   height: 100%;
   background: #fff;
+  padding-bottom: 100rpx;
+
 }
 .good_list{
   width: 100%;
-  display: flex;
-  flex-direction: row;
   margin-bottom: 20rpx;
   overflow: hidden;
 }
@@ -71,6 +71,7 @@
   width: 60%;
   display: flex;
   flex-direction: column;
+  margin-left: 20rpx;
   justify-content: space-between;
 }
 .good_title{
