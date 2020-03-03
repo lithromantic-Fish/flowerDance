@@ -351,6 +351,16 @@ Page({
         "num": this.data.total,
         "uid": app.globalData.uId||wx.getStorageSync('uId')
       }
+    }else{
+      var parms = {
+        "title": this.data.goods_name,
+        "goods_id": app.globalData.goodsOrPageId,
+        "skus_id": 0,
+        "num": this.data.total,
+        "uid": app.globalData.uId || wx.getStorageSync('uId')
+      }
+    }
+
       wx.request({
         url: app.globalData.url+'/mobile/index.php?m=flowerapi&c=order&a=cart',
         data:parms,
@@ -371,7 +381,6 @@ Page({
           }
         }
       })
-    }
   },
   // addNums(){
   //   this.data.total++
