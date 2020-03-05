@@ -15,22 +15,22 @@ Page({
     sayingPage: 1, //当前的评价页数，点击的的时候置1，下拉的时候++
     gallery_index: 1,
     choose: 0,
-    animationHeight:null,
-    nature:'block',
+    animationHeight: null,
+    nature: 'block',
     natureCur: "none", //刚开始将属性的幕布设置为none
     display: "none",
-    coverData:"100%",
+    coverData: "100%",
     orderNextPrice: '', //用来记录传到下一个页面的订阅花的价格
-    good_sku:{},//规格
-    good_attr:{},//选中的商品规格
-    total:1,
+    good_sku: {},//规格
+    good_attr: {},//选中的商品规格
+    total: 1,
     remainTime: '' //剩余的时间，用来做倒计时
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     var that = this;
     //进入先设置是哪个页面的样式，普通-秒杀还是团购
     that.setData({
@@ -42,11 +42,11 @@ Page({
     height = (parseInt(height) - 70) + "px";
     that.setData({
       natureHeight: height,
-      animationHeight:height
+      animationHeight: height
     })
 
     wx.getSystemInfo({
-      success: function(res) {
+      success: function (res) {
         that.setData({
           clientHeight: res.windowHeight
         });
@@ -66,7 +66,7 @@ Page({
     })
   },
 
-  swiperchange: function(e) {
+  swiperchange: function (e) {
     var that = this;
     that.data.sayingPage = 1;
     var cur = e.detail.current;
@@ -81,7 +81,7 @@ Page({
     }
   },
 
-  requestSaying: function() { //请求评价的数据接口
+  requestSaying: function () { //请求评价的数据接口
     var that = this;
     wx.showLoading({
       title: '获取评价信息中...',
@@ -89,7 +89,7 @@ Page({
     wx.request({
       url: app.globalData.url + '/mobile/index.php?m=flowerapi&c=goods&a=goodscomment&goods_id=' + app.globalData.goodsOrPageId + "&page=" + that.data.sayingPage + "&uid=" + app.globalData.uId,
       method: "GET",
-      success: function(res) {
+      success: function (res) {
         wx.hideLoading();
         var len = res.data.data.length;
         if (len == 0) {
@@ -112,7 +112,7 @@ Page({
         }
 
       },
-      fail: function(res) {
+      fail: function (res) {
         wx.hideLoading();
         wx.showToast({
           title: '获取评价信息失败',
@@ -125,30 +125,30 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
-// 关闭选择规格
+  // 关闭选择规格
 
   delCur: function () {
     this.popupBar()
   },
 
-  showPopupLayer:function(){
+  showPopupLayer: function () {
     this.popupBar()
   },
 
   //分享内页
-  sharePage(){
+  sharePage() {
     wx.showShareMenu({
       withShareTicket: true
     })
   },
 
   // 控制显示和隐藏加入购物车规格弹窗
-  popupBar:function(){
+  popupBar: function () {
     isAnim = !isAnim
-    console.log('isAnim',isAnim)
+    console.log('isAnim', isAnim)
     if (isAnim) {
       cData = 0
       this.setData({
@@ -164,17 +164,17 @@ Page({
       coverData: cData,
     })
   },
-  hideBlock(){
+  hideBlock() {
     this.popupBar()
 
   },
 
-  buyNow: function() {
+  buyNow: function () {
     var that = this;
     //如果是没登录，需要登录一下。
     wx.getStorage({
       key: 'uId',
-      success: function(res) {
+      success: function (res) {
         var _uId = res.data;
         if (_uId) {
           app.globalData.orderFrom = 2; //2表示从详情页进入未付款订单页
@@ -190,20 +190,20 @@ Page({
           wx.showModal({
             title: '登录授权',
             content: '即将跳转到登录页进行登录',
-            success:function(res){
-                if(res.confirm){
-                  wx.navigateTo({
-                    url: '../Login/LoginPage',
-                  })
-                }else if(res.cancel){
-                  
-                }
+            success: function (res) {
+              if (res.confirm) {
+                wx.navigateTo({
+                  url: '../Login/LoginPage',
+                })
+              } else if (res.cancel) {
+
+              }
             }
           })
-         
+
         }
       },
-      fail: function() {
+      fail: function () {
         wx.showModal({
           title: '登录授权',
           content: '即将跳转到登录页进行登录',
@@ -224,7 +224,7 @@ Page({
 
   },
 
-  changeEnd: function(e) {
+  changeEnd: function (e) {
     var that = this;
     that.setData({
       gallery_index: e.detail.current + 1
@@ -232,7 +232,7 @@ Page({
   },
 
   //普通商品请求的接口,包含当日达和订阅花
-  requestNormal: function() {
+  requestNormal: function () {
     var that = this;
 
     //对当日达或者订阅花进行一个判断
@@ -242,7 +242,7 @@ Page({
     wx.request({
       url: app.globalData.url + '/mobile/index.php?m=flowerapi&c=goods&a=goodsdetail&goods_id=' + app.globalData.goodsOrPageId + "&today_id=" + app.globalData.todayId + "&sub_id=" + app.globalData.subId + "&uid=" + app.globalData.uId,
       method: "GET",
-      success: function(res) {
+      success: function (res) {
         wx.hideLoading();
         //获取图片的长度并将src放入
         var imgArr = new Array();
@@ -267,18 +267,18 @@ Page({
         var price = res.data.data.shop_price.toString();
         var big_text = price.split(".")[0];
         var last_text = price.split(".")[1];
-        if (res.data.data.goods_sku){
-          res.data.data.goods_sku.row.forEach((ele,idx)=>{
-            if(idx!=0){
+        if (res.data.data.goods_sku) {
+          res.data.data.goods_sku.row.forEach((ele, idx) => {
+            if (idx != 0) {
               ele.isActive = false
-            }else{
+            } else {
               ele.isActive = true
             }
           })
 
           that.setData({
             good_sku: res.data.data.goods_sku,
-            good_attr:res.data.data.goods_sku.row[0]  //默认将第一个规格作为选中
+            good_attr: res.data.data.goods_sku.row[0]  //默认将第一个规格作为选中
           })
         }
         that.setData({
@@ -294,7 +294,7 @@ Page({
           goods_thumb: res.data.data.goods_thumb
         })
       },
-      fail: function(res) {
+      fail: function (res) {
         wx.hideLoading();
         wx.showToast({
           title: '数据获取失败',
@@ -304,12 +304,12 @@ Page({
     })
   },
   //选择商品规格
-  selectAttr(e){
-    console.log('e.currentTarget.attr',e.currentTarget.dataset)
+  selectAttr(e) {
+    console.log('e.currentTarget.attr', e.currentTarget.dataset)
 
-    this.data.good_sku.row.forEach((ele,idx)=>{
+    this.data.good_sku.row.forEach((ele, idx) => {
       ele.isActive = false
-      if (e.currentTarget.dataset.attr.id == ele.id){
+      if (e.currentTarget.dataset.attr.id == ele.id) {
         ele.isActive = true
       }
 
@@ -321,66 +321,114 @@ Page({
   },
 
   //输入框直接改变购买数量
-  getSelectNum(e){
+  getSelectNum(e) {
 
     console.log('e', e.detail)
     this.setData({
-      total:e.detail
+      total: e.detail
     })
   },
 
   // 确认加入购物车
   confirm: function () {
-    var that = this
-    if (this.data.total == 0) {
-      wx.showModal({
-        title: '提示',
-        showCancel: false,
-        content: '数量不能为0',
-      })
-      return
-    }
-    console.log('attr', this.data.good_attr)
-    console.log('total', this.data.total)
-    //如果有商品规格选择
-    if (this.data.good_attr) {
-      var parms = {
-        "title": this.data.good_attr.title,
-        "goods_id": app.globalData.goodsOrPageId ,
-        "skus_id": parseInt(this.data.good_attr.id) ? parseInt(this.data.good_attr.id):0,
-        "num": this.data.total,
-        "uid": app.globalData.uId||wx.getStorageSync('uId')
-      }
-    }else{
-      var parms = {
-        "title": this.data.goods_name,
-        "goods_id": app.globalData.goodsOrPageId,
-        "skus_id": 0,
-        "num": this.data.total,
-        "uid": app.globalData.uId || wx.getStorageSync('uId')
-      }
-    }
 
-      wx.request({
-        url: app.globalData.url+'/mobile/index.php?m=flowerapi&c=order&a=cart',
-        data:parms,
-        success:function(res){
-          console.log('res',res.data)
-          if(res.data.code==200){
-            that.popupBar()
-
-            wx.showToast({
-              icon:'none',
-              title: '添加成功,该商品在购物车等亲~',
+    var that = this;
+    //如果是没登录，需要登录一下。
+    wx.getStorage({
+      key: 'uId',
+      success: function (res) {
+        console.log('res',res.data)
+        var _uId = res.data;
+        if (_uId) {
+          if (that.data.total == 0) {
+            wx.showModal({
+              title: '提示',
+              showCancel: false,
+              content: '数量不能为0',
             })
-          }else{
-            wx.showToast({
-              icon: 'none',
-              title: res.data.msg,
-            })
+            return
           }
+          console.log('attr', that.data.good_attr)
+          console.log('total', that.data.total)
+          //如果有商品规格选择
+          if (that.data.good_attr) {
+            var parms = {
+              "title": that.data.good_attr.title,
+              "goods_id": app.globalData.goodsOrPageId,
+              "skus_id": parseInt(that.data.good_attr.id) ? parseInt(that.data.good_attr.id) : 0,
+              "num": that.data.total,
+              "uid": app.globalData.uId || wx.getStorageSync('uId')
+            }
+          } else {
+            var parms = {
+              "title": that.data.goods_name,
+              "goods_id": app.globalData.goodsOrPageId,
+              "skus_id": 0,
+              "num": that.data.total,
+              "uid": app.globalData.uId || wx.getStorageSync('uId')
+            }
+          }
+
+          wx.request({
+            url: app.globalData.url + '/mobile/index.php?m=flowerapi&c=order&a=cart',
+            data: parms,
+            success: function (res) {
+              console.log('res', res.data)
+              if (res.data.code == 200) {
+                that.popupBar()
+
+                wx.showToast({
+                  icon: 'none',
+                  title: '添加成功,该商品在购物车等亲~',
+                })
+              } else {
+                wx.showToast({
+                  icon: 'none',
+                  title: res.data.msg,
+                })
+              }
+            }
+          })
+        } else {
+          wx.showModal({
+            title: '登录授权',
+            content: '即将跳转到登录页进行登录',
+            success: function (res) {
+              if (res.confirm) {
+                wx.navigateTo({
+                  url: '../Login/LoginPage',
+                })
+              } else if (res.cancel) {
+
+              }
+            }
+          })
+
         }
-      })
+      },
+      fail: function () {
+        wx.showModal({
+          title: '登录授权',
+          content: '即将跳转到登录页进行登录',
+          success: function (res) {
+            if (res.confirm) {
+              wx.navigateTo({
+                url: '../Login/LoginPage',
+              })
+            } else if (res.cancel) {
+
+            }
+          }
+        })
+      }
+    })
+
+
+
+
+
+
+
   },
   // addNums(){
   //   this.data.total++
@@ -395,7 +443,7 @@ Page({
   //   })
   // },
   // 团购商品请求的接口
-  requestGroup: function() {
+  requestGroup: function () {
     var that = this;
     wx.showLoading({
       title: '数据获取中...',
@@ -403,7 +451,7 @@ Page({
     wx.request({
       url: app.globalData.url + '/mobile/index.php?m=flowerapi&c=goods&a=groupgoodsdetail&act_id=' + app.globalData.actId + "&uid=" + app.globalData.uId,
       method: "GET",
-      success: function(res) {
+      success: function (res) {
         wx.hideLoading();
 
         console.log("详情页返回给我的数据为");
@@ -451,12 +499,12 @@ Page({
         })
 
         //在最后设置一个倒计时，对页面时间做一个倒计时
-        setTimeout(function() {
+        setTimeout(function () {
           that.countDown();
         }, 1000) //延迟时间 这里是1秒
 
       },
-      fail: function(res) {
+      fail: function (res) {
         wx.hideLoading();
         wx.showToast({
           title: '数据获取失败',
@@ -467,7 +515,7 @@ Page({
   },
 
   //秒杀的接口
-  requestSpike: function() {
+  requestSpike: function () {
     var that = this;
     wx.showLoading({
       title: '数据加载中...',
@@ -475,7 +523,7 @@ Page({
     wx.request({
       url: app.globalData.url + '/mobile/index.php?m=flowerapi&c=goods&a=skillgoodsdetail&sec_id=' + app.globalData.actId + "&uid=" + app.globalData.uId,
       method: "GET",
-      success: function(res) {
+      success: function (res) {
         wx.hideLoading();
 
         console.log("秒杀详情页的数据为");
@@ -513,25 +561,25 @@ Page({
         var spike_last_text = price.split(".")[1];
 
         that.setData({
-            gallery_length: imgLen, //轮播图
-            goods_gallery: imgArr,
-            goods_name: res.data.data.goods_name,
-            goods_brief: res.data.data.goods_brief,
-            spikeBigText: spike_big_text,
-            spikeLastText: spike_last_text,
-            give_integral: res.data.data.give_integral, //商品送的积分
-            shop_price: res.data.data.shop_price, //商品原价
-            rob_number: res.data.data.rob_number, //商品已抢数量
-            comment_number: comment_number, //商品评价数量
-            haveGoods: res.data.data.is_rob //是否已经抢完
-          }),
+          gallery_length: imgLen, //轮播图
+          goods_gallery: imgArr,
+          goods_name: res.data.data.goods_name,
+          goods_brief: res.data.data.goods_brief,
+          spikeBigText: spike_big_text,
+          spikeLastText: spike_last_text,
+          give_integral: res.data.data.give_integral, //商品送的积分
+          shop_price: res.data.data.shop_price, //商品原价
+          rob_number: res.data.data.rob_number, //商品已抢数量
+          comment_number: comment_number, //商品评价数量
+          haveGoods: res.data.data.is_rob //是否已经抢完
+        }),
 
           //在最后设置一个倒计时，对页面时间做一个倒计时
-          setTimeout(function() {
+          setTimeout(function () {
             that.countDown();
           }, 1000) //延迟时间 这里是1秒
       },
-      fail: function(res) {
+      fail: function (res) {
         wx.hideLoading();
         wx.showToast({
           title: '数据获取失败',
@@ -541,13 +589,13 @@ Page({
     })
   },
 
-  BackHome: function() {
+  BackHome: function () {
     wx.reLaunch({
       url: '../Main/MainPage',
     })
   },
 
-  connectHome: function() {
+  connectHome: function () {
     wx.showModal({
       content: app.globalData.homePhone,
       cancelText: '取消',
@@ -564,7 +612,7 @@ Page({
     })
   },
 
-  toLeft: function() { //跳转到商品参数
+  toLeft: function () { //跳转到商品参数
     var that = this;
     that.data.currentTab = 0;
     that.setData({
@@ -573,7 +621,7 @@ Page({
     })
   },
 
-  toRight: function() { //跳转到商品参数
+  toRight: function () { //跳转到商品参数
     var that = this;
     that.data.currentTab = 1;
     that.data.sayingPage = 1; //点击过来的时候都将页数置为1
@@ -584,7 +632,7 @@ Page({
   },
 
 
-  chooseHow: function(e) {
+  chooseHow: function (e) {
     var that = this;
     app.globalData.howId = e.currentTarget.dataset.lockerid.split(":")[1];
     var price = e.currentTarget.dataset.lockerid.split(":")[2];
@@ -596,7 +644,7 @@ Page({
     })
   },
 
-  chooseWhen: function(e) {
+  chooseWhen: function (e) {
     var that = this;
     app.globalData.whenId = e.currentTarget.dataset.lockerid.split(":")[1];
     var index = e.currentTarget.dataset.lockerid.split(":")[0];
@@ -607,40 +655,40 @@ Page({
 
 
 
-  requestNature: function() { //获取订阅花的2种属性
+  requestNature: function () { //获取订阅花的2种属性
     var that = this;
     wx.request({
       url: app.globalData.url + '/mobile/index.php?m=flowerapi&c=goods&a=subscribedeliverylist&uid=' + app.globalData.uId,
       method: "GET",
-      success: function(res) {
+      success: function (res) {
         that.setData({
           whenList: res.data.data
         })
       },
-      fail: function(res) {}
+      fail: function (res) { }
     });
 
     wx.request({
       url: app.globalData.url + '/mobile/index.php?m=flowerapi&c=goods&a=subscribescalelist&goods_id=' + app.globalData.goodsOrPageId + '&uid=' + app.globalData.uId,
       method: "GET",
-      success: function(res) {
+      success: function (res) {
         that.setData({
           howList: res.data.data,
           natureCur: "block"
         })
       },
-      fail: function(res) {}
+      fail: function (res) { }
     });
   },
 
-  onReachBottom: function() { //当触碰到底部的时候加载的函数
+  onReachBottom: function () { //当触碰到底部的时候加载的函数
     var that = this;
     if (that.data.currentTab == 1) {
       that.requestSaying();
     }
   },
 
-  onShow: function() { //页面加载的时候把订阅花选的属性都清空,同时清空样式
+  onShow: function () { //页面加载的时候把订阅花选的属性都清空,同时清空样式
     var that = this;
     app.globalData.howId = '';
     app.globalData.whenId = '';
@@ -650,7 +698,7 @@ Page({
     })
   },
 
-  getSec: function(time) { //类似于2019-04-05 12:12:10，算出剩余秒数并保存
+  getSec: function (time) { //类似于2019-04-05 12:12:10，算出剩余秒数并保存
     var that = this;
     console.log("即将进行转化的时间为:");
     console.log(time);
@@ -663,7 +711,7 @@ Page({
   },
 
   //将时间转换为时间戳,返回的单位是秒
-  DateToUnix: function(str) {
+  DateToUnix: function (str) {
     var f = str.split(' ', 2);
     var d = (f[0] ? f[0] : '').split('-', 3);
     var t = (f[1] ? f[1] : '').split(':', 3);
@@ -678,7 +726,7 @@ Page({
   },
 
   //对时间进行一个处理,将秒数转换为天，时，分，秒,如果是0 0 0则都显示0 0 0 
-  putTimeToPage: function() {
+  putTimeToPage: function () {
     var that = this;
     var time = that.data.remainTime;
     var d = parseInt(time / 86400);
@@ -708,7 +756,7 @@ Page({
   },
 
   //倒计时的一个示例
-  countDown: function() {
+  countDown: function () {
     var that = this;
 
     that.data.remainTime--;
@@ -742,7 +790,7 @@ Page({
     return param < 10 ? '0' + param : param;
   },
 
-  onShareAppMessage: function(res) { //转发的检测
+  onShareAppMessage: function (res) { //转发的检测
     return {
       title: '菁棠花业',
       path: '/pages/Main/MainPage'

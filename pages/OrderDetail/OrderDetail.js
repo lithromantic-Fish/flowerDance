@@ -15,6 +15,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    
+
+
     var that = this;
 
     //获取手机屏幕的高度以处理幕布
@@ -32,9 +35,14 @@ Page({
     wx.showLoading({
       title: '获取订单信息中',
     })
+    var parm = {
+        order_id : app.globalData.order_id,
+        uid : app.globalData.uId
+    }
     wx.request({
-      url: app.globalData.url + '/mobile/index.php?m=flowerapi&c=order&a=orderdetail&order_id=' + app.globalData.order_id + "&uid=" + app.globalData.uId,
+      url: app.globalData.url + '/mobile/index.php?m=flowerapi&c=order&a=orderdetail',
       method: "GET",
+      data: parm,
       success: function(res) {
         wx.hideLoading();
         var status = res.data.data.type;

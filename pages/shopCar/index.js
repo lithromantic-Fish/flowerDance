@@ -119,6 +119,27 @@ Page({
     })
 
   },
+
+  skus(id,num) //声明对象
+     {
+      this.skus_id = id; 
+      this.number = num; 
+  },
+
+  settle(){
+    const cartList = this.data.cartList
+    const selectArr = []
+    cartList.forEach((ele,idx)=>{
+      if (ele.select){
+        selectArr.push(new this.skus(ele.skus_id, ele.num))
+      }
+    })
+    console.log('this',selectArr)
+    app.globalData.skus = JSON.stringify(selectArr) 
+    wx.navigateTo({
+      url: '../PayDetail/PayDetailPage?isShop=1',
+    })
+  },
   selectAll() {
 
     const cartList = this.data.cartList

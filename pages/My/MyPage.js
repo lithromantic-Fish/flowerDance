@@ -21,8 +21,10 @@ Page({
       that.setData({
         ifLogin:1
       })
-      that.requestMy(); //加载个人信息
+      // that.requestMy(); //加载个人信息
     }
+    // console.log('iod',wx.getStorageSync('uId'))
+    that.requestMy(); //加载个人信息
 
   },
 
@@ -166,8 +168,10 @@ Page({
 
   requestMy: function() { //加载个人信息，加载完后继续加载客服与帮助的信息
     var that = this;
+    console.log('app.globalData.uId', app.globalData)
+    console.log('app.globalData.uId', app.globalData.uId)
     wx.request({
-      url: app.globalData.url + '/mobile/index.php?m=flowerapi&c=user&a=getuserinfo&uid=' + app.globalData.uId,
+      url: app.globalData.url + '/mobile/index.php?m=flowerapi&c=user&a=getuserinfo&uid=' +wx.getStorageSync("uId"),
       method: "GET",
       success: function(res) {
         //照片如果没有则默认一张

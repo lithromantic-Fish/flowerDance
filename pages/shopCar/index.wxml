@@ -41,7 +41,7 @@
         <text class='money'>¥{{totalMoney}}</text>
       </view>
       <view class='btn_amount'>
-        <button>去结算({{totalCount}})</button>
+        <button bindtap="settle">去结算({{totalCount}})</button>
       </view>
     </view>
     </view>

@@ -37,36 +37,110 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    var that = this;
-    that.data.orderNextPrice = options.price;
-    that.setPayWay(); //根据商品信息（团购，秒杀，普通来决定支付方式),并将信息填入，多少钱，多少积分
 
-    if (app.globalData.orderFrom == 2) { //1表示从详情页进来，拿默认地址
-      that.getAddr(); //获得默认地址
-    } else if (app.globalData.orderFrom == 1) { //1则从地址过来
-      //从地址过来后，将其修改为从详情页过来
-      app.globalData.orderFrom == 2;
-      that.getAddrFromA();
-    }
-    if (parseInt(app.globalData.goodsType) == 1 || parseInt(app.globalData.goodsType) == 4 || parseInt(app.globalData.goodsType) == 5) {
-      that.getGoodsDetail(); //获得普通商品信息
-    } else if (parseInt(app.globalData.goodsType) == 3) {
-      that.getGroupDetail(); //获得团购商品信息
-    } else if (parseInt(app.globalData.goodsType) == 2) {
-      that.getSpikeDetail(); //获得秒杀商品信息
-    }
 
-    //只有当goodsType==1的时候才会有积分支付,只有普通商品才有积分支付
-    if (app.globalData.goodsType == 1) {
-      that.getMyInfo(); //获得个人积分并判断是否可以点击积分支付
-    }
+      // 如果是从购物车过来的
+      console.log('opti',options)
+    if (options.isShop=='1'){
+        // 先请求创建订单接口，获取orderID,再请求订单详情接口
+      this.getCreatOrder()
 
-    var height = wx.getSystemInfoSync().windowHeight;
-    that.setData({
-      curTop: (height - 100) + "px",
-      curBottom: "100px"
+        // getOrderDetail()
+
+    }else{
+          var that = this;
+          that.data.orderNextPrice = options.price;
+          that.setPayWay(); //根据商品信息（团购，秒杀，普通来决定支付方式),并将信息填入，多少钱，多少积分
+      
+          if (app.globalData.orderFrom == 2) { //1表示从详情页进来，拿默认地址
+            that.getAddr(); //获得默认地址
+          } else if (app.globalData.orderFrom == 1) { //1则从地址过来
+            //从地址过来后，将其修改为从详情页过来
+            app.globalData.orderFrom == 2;
+            that.getAddrFromA();
+          }
+          if (parseInt(app.globalData.goodsType) == 1 || parseInt(app.globalData.goodsType) == 4 || parseInt(app.globalData.goodsType) == 5) {
+            that.getGoodsDetail(); //获得普通商品信息
+          } else if (parseInt(app.globalData.goodsType) == 3) {
+            that.getGroupDetail(); //获得团购商品信息
+          } else if (parseInt(app.globalData.goodsType) == 2) {
+            that.getSpikeDetail(); //获得秒杀商品信息
+          }
+      
+          //只有当goodsType==1的时候才会有积分支付,只有普通商品才有积分支付
+          if (app.globalData.goodsType == 1) {
+            that.getMyInfo(); //获得个人积分并判断是否可以点击积分支付
+          }
+      
+          var height = wx.getSystemInfoSync().windowHeight;
+          that.setData({
+            curTop: (height - 100) + "px",
+            curBottom: "100px"
+          })
+    }
+  },
+  // 创建新订单接口
+  getCreatOrder(){
+    var that = this
+    wx.showLoading({
+      title: '页面跳转中...',
+    })
+
+    wx.request({ //点击立即购买后进行的接口请求
+      url: app.globalData.url + '/mobile/index.php?m=flowerapi&c=order&a=createneworder',
+      method: "POST",
+      header: {
+        "content-type": "application/x-www-form-urlencoded"
+      },
+      data: {
+        sec_id: "",
+        order_type: "1", //判断订单的类型
+        pay_type: "1",
+        goods_id: "0",
+        address_id: 72,
+        remark: that.data.remark,
+        uid: app.globalData.uId,
+        delive_id: app.globalData.whenId,
+        sub_id: app.globalData.howId,
+        skus: app.globalData.skus
+      },
+      success: function(res) {
+        wx.hideLoading();
+        console.log("创建订单返回给我的数据为:");
+        console.log(res);
+        if (res.data.code == 200) {
+          app.globalData.order_id = res.data.data.order_id;
+          // that.PayMoney();
+          if (that.data.pay_type == 2) { //积分支付直接跳转到支付成功页
+            wx.reLaunch({
+              url: '../PaySuccess/PaySuccess',
+            })
+          } else { //金额支付则调用微信的支付接口
+            that.requestPay(res.data.data.appId, res.data.data.nonceStr, res.data.data.package, res.data.data.signType, res.data.data.timeStamp, res.data.data.paySign, res.data.data.total_fee);
+          }
+        } else {
+          wx.showToast({
+            title: res.data.msg,
+            icon: 'none'
+          })
+        }
+      },
+      fail: function(res) {
+        wx.hideLoading();
+        wx.showToast({
+          title: '付款失败',
+          icon: 'none'
+        })
+      }
     })
   },
+
+  //获取订单详情
+  getOrderDetail(){
+    
+  },
+
+
   tapOneDialogButton(e) {
     this.setData({
       showOneButtonDialog: true
@@ -270,8 +344,15 @@ Page({
 
   getGoodsDetail: function() {
     var that = this;
+    var parm = {
+      goods_id:app.globalData.goodsOrPageId,
+      today_id:app.globalData.todayId,
+      sub_id:app.globalData.subId,
+      uid:app.globalData.uId,
+    }
     wx.request({
-      url: app.globalData.url + '/mobile/index.php?m=flowerapi&c=goods&a=goodsdetail&goods_id=' + app.globalData.goodsOrPageId + "&today_id=" + app.globalData.todayId + "&sub_id=" + app.globalData.subId + "&uid=" + app.globalData.uId,
+      url: app.globalData.url + '/mobile/index.php?m=flowerapi&c=goods&a=goodsdetail',
+      data:parm,
       method: "GET",
       success: function(res) {
         var goods_name = res.data.data.goods_name;

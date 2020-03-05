@@ -8,7 +8,7 @@ App({
     // url: "https://flower.transtive.com",    //全局的URL
     url: "http://47.89.15.170:8081",    //全局的URL
     // url:"http://www.flower.com",
-    uId: "",             //记录当前登陆者信息
+    uId: wx.getStorageSync('uId') ? wx.getStorageSync('uId'):"",             //记录当前登陆者信息
     globalAddrId: "",     //记录修改或新增地址的id
     order_id: "",       //记录当前的订单id    
     nowStatus: "",       //记录当前订单的状态
@@ -43,7 +43,7 @@ App({
     subId: "",      //记录订阅花id
     howId: "", //一个月几束id
     whenId: "",   //收花日id
-
+    skus:[],    //商品规格
     //地址那里，在保存后回到列表页，列表页进行一个自刷新，但是需要知道是不是从编辑/新增回到列表
     addrListFrom:0 ,      //初始值为0，1表示从编辑/新增进来，需要页面自刷新  
 
