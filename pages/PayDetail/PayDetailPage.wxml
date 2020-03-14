@@ -30,7 +30,21 @@
 
   <image class="image-point" mode="widthFix" src='../Images/blue_red.png'></image>
 
-  <view class="middle">
+  <view class="middle" wx:for="{{orderArr}}" wx:if="{{orderArr}}">
+    <view class="center one">
+      <image style="width:150rpx;" src="{{item.goods_thumb}}" mode="widthFix"></image>
+    </view>
+    <view class="two">
+      <text class="text1 hideMuch">{{item.description}}</text>
+      <!-- <text class="text2 hideMuch">{{goods_brief}}</text> -->
+    </view>
+    <view class="three">
+      <text class="text1">¥ {{item.sku_amount_total}}</text>
+      <text class="text2">x {{item.number}}</text>
+    </view>
+  </view>
+
+  <view class="middle" wx:if="{{orderArr.length==0}}">
     <view class="center one">
       <image style="width:150rpx;" src="{{goods_thumb}}" mode="widthFix"></image>
     </view>

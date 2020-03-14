@@ -1,6 +1,7 @@
 // pages/PayDetail/PayDetailPage.js
 var app = getApp();
-
+let isCar = false
+let isBack = false
 Page({
 
   /**
@@ -19,6 +20,7 @@ Page({
     last_price: "",
     address_id: "",
     remark: "",
+    orderArr:[],
     dialogShow: false,
     showOneButtonDialog: false,
     payWay: "全额支付", //记录一下支付方式，初始默认全额支付
@@ -42,12 +44,14 @@ Page({
       // 如果是从购物车过来的
       console.log('opti',options)
     if (options.isShop=='1'){
+      isCar = true
         // 先请求创建订单接口，获取orderID,再请求订单详情接口
       this.getCreatOrder()
 
-        // getOrderDetail()
 
     }else{
+        isCar = false
+
           var that = this;
           that.data.orderNextPrice = options.price;
           that.setPayWay(); //根据商品信息（团购，秒杀，普通来决定支付方式),并将信息填入，多少钱，多少积分
@@ -80,11 +84,9 @@ Page({
     }
   },
   // 创建新订单接口
-  getCreatOrder(){
+  getCreatOrder(isBack){
     var that = this
-    wx.showLoading({
-      title: '页面跳转中...',
-    })
+
 
     wx.request({ //点击立即购买后进行的接口请求
       url: app.globalData.url + '/mobile/index.php?m=flowerapi&c=order&a=createneworder',
@@ -110,13 +112,19 @@ Page({
         console.log(res);
         if (res.data.code == 200) {
           app.globalData.order_id = res.data.data.order_id;
+
+          that.getOrderDetail()
+          if(isBack){
+
           // that.PayMoney();
+            console.log('that.data.pay_type', that.data.pay_type)
           if (that.data.pay_type == 2) { //积分支付直接跳转到支付成功页
             wx.reLaunch({
               url: '../PaySuccess/PaySuccess',
             })
           } else { //金额支付则调用微信的支付接口
             that.requestPay(res.data.data.appId, res.data.data.nonceStr, res.data.data.package, res.data.data.signType, res.data.data.timeStamp, res.data.data.paySign, res.data.data.total_fee);
+          }
           }
         } else {
           wx.showToast({
@@ -137,7 +145,95 @@ Page({
 
   //获取订单详情
   getOrderDetail(){
-    
+    // /mobile/index.php ? m = flowerapi & c=order & a=orderdetail
+    var that = this;
+    var allprice = 0
+    wx.showLoading({
+      title: '获取订单信息中',
+    })
+    var parm = {
+      order_id: app.globalData.order_id,
+      uid: app.globalData.uId
+    }
+    wx.request({
+      url: app.globalData.url + '/mobile/index.php?m=flowerapi&c=order&a=orderdetail',
+      method: "GET",
+      data: parm,
+      success: function (res) {
+        wx.hideLoading()
+        res.data.data.skus.forEach((ele,idx)=>{
+          allprice += parseInt(ele.sku_amount_total) 
+        })
+        that.setData({
+          orderArr: res.data.data.skus,
+          shop_price: allprice
+          
+        })
+        // //对电话号码进行处理
+        // if (res.data.data.mobile) {
+        //   var first = res.data.data.mobile.substring(0, 3);
+        //   var last = res.data.data.mobile.substring(7, 11);
+        //   var mobile = first + "****" + last;
+        // } else {
+        //   var mobile = res.data.data.mobile;
+        // }
+
+        // //对地址进行处理
+        // var province = res.data.data.area[0].region_name + "省";
+        // var country = res.data.data.area[1].region_name + "市";
+        // var posi = res.data.data.area[2].region_name;
+        // var location = province + " " + country + " " + posi + "  " + res.data.data.address;
+
+        // //对支付方式进行处理,并同时对实付款进行管理
+        // var pay_way, realPrice;
+        // if (res.data.data.pay_type) {
+        //   if (res.data.data.pay_type == 1) {
+        //     pay_way = "金额支付";
+        //     realPrice = res.data.data.price;
+        //   } else {
+        //     pay_way = "积分支付";
+        //     realPrice = 0;
+        //   }
+        // }
+
+        // //对积分进行处理
+        // if (res.data.data.pay_type == 2) { //2是积分支付
+        //   var pay_number = "-" + res.data.data.integral + "积分";
+        //   that.setData({
+        //     integral: res.data.data.integral //如果是积分支付，将积分值放入
+        //   })
+        // } else if (res.data.data.pay_type == 1) { //1是金额支付
+        //   var pay_number = "-0积分";
+        // }
+
+        // that.setData({
+        //   text1: text1, //以上信息是所有单子都共同的
+        //   text2: text2,
+        //   consignee: res.data.data.consignee,
+        //   mobile: mobile,
+        //   goods_name: res.data.data.goods_name,
+        //   location: location,
+        //   price: res.data.data.price,
+        //   img: res.data.data.img,
+        //   realPrice: realPrice,
+
+
+        //   order_sn: res.data.data.order_sn,
+        //   add_time_str: res.data.data.add_time_str,
+        //   invoice_no: res.data.data.invoice_no,
+        //   pay_way: pay_way, //做了判断
+        //   freight: res.data.data.freight, //运费
+        //   pay_number: pay_number //积分的处理**做了判断
+        // })
+      },
+      fail: function (res) {
+        wx.hideLoading();
+        wx.showToast({
+          title: '订单信息获取失败',
+          icon: 'none'
+        })
+      }
+    })
   },
 
 
@@ -164,6 +260,24 @@ Page({
   //pay即为支付的接口
   Pay: function() {
     var that = this;
+
+    if (!that.data.address_id) { //对地址做一个判断
+      that.setData({
+        showMessage: "请选择地址",
+        display: "flex",
+      }),
+        setTimeout(function () {
+          that.setData({
+            showMessage: "",
+            display: "none",
+          })
+        }, 1000)
+      return;
+    }
+    if(isCar){
+      this.getCreatOrder(true)
+      return
+    }
     if (!this.data.isSwitch){
       wx.showModal({
         title: '提示',
@@ -178,19 +292,6 @@ Page({
       return
     }
 
-    if (!that.data.address_id) { //对地址做一个判断
-      that.setData({
-          showMessage: "请选择地址",
-          display: "flex",
-        }),
-        setTimeout(function() {
-          that.setData({
-            showMessage: "",
-            display: "none",
-          })
-        }, 1000)
-      return;
-    }
 
     //对sec_id进行处理
     //秒杀id或者团购id或者订阅花id或者当日达id

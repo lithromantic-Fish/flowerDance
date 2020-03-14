@@ -24,6 +24,23 @@ Page({
  * 生命周期函数--监听页面显示
  */
   onShow: function () {
+    var isLogin = wx.getStorageSync("uId")
+    if(!isLogin){
+      wx.showModal({
+        title: '登录授权',
+        content: '即将跳转到登录页进行登录',
+        success: function (res) {
+          if (res.confirm) {
+            wx.navigateTo({
+              url: '../Login/LoginPage',
+            })
+          } else if (res.cancel) {
+
+          }
+        }
+      })
+      return
+    }
     this.getList();
     this.getCartList();
   },
@@ -122,7 +139,7 @@ Page({
 
   skus(id,num) //声明对象
      {
-      this.skus_id = id; 
+      this.sku_id = id; 
       this.number = num; 
   },
 

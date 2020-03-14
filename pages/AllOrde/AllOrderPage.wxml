@@ -24,8 +24,11 @@
           </view>
         </view>
         <view class="middle-middle">
-          <view class="text-top">
+          <view class="text-top" wx:if="{{items.goods_name}}">
             <text>{{items.goods_name}}</text>
+          </view>
+          <view class="text-top" wx:if="{{!items.goods_name}}">
+            <text  wx:for="{{items.skus}}" wx:for-item="item">{{item.description}}</text>
           </view>
           <view class="text-bottom">
             <text>{{items.goods_brief}}</text>

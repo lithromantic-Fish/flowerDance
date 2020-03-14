@@ -76,11 +76,14 @@ text-align: right;
 
 .orders .order-inside .inside-middle .middle-middle .text-top{ 
   width:100%;height:45%;float: left;position: relative;
+  display: flex;
+align-items: flex-end;
+
 }
 
 .orders .order-inside .inside-middle .middle-middle .text-top text{ 
   display: block;bottom:0px;font-size: 26rpx;font-weight: Medium;font-family: PingFang-SC-Medium;
-  position: absolute;color: #666666;
+  color: #666666;margin-right: 15rpx;
 }
 
 .orders .order-inside .inside-middle .middle-middle .text-bottom{

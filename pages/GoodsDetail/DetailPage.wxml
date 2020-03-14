@@ -125,7 +125,7 @@
 
   <view class="align-middle four">
     <text class="text1">购买送积分</text>
-    <text class="text2">+{{give_integral}}积分</text>
+    <text class="text2">+1 积分</text>
   </view>
 
   <view class="choose">
@@ -207,8 +207,8 @@
       </view> 
     </view> -->
   </view>
-  <view class="wrap-right">
-      <view class="addToCar" bindtap='showPopupLayer'>加入购物车</view>
+  <view class="wrap-right" >
+      <view class="addToCar" bindtap='showPopupLayer' wx:if="{{good_sku.row}}">加入购物车</view>
 
       <view wx:if="{{canBuy==1}}" class="center buy-now" bindtap='buyNow'>
         <text>立即购买</text>

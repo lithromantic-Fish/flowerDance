@@ -182,8 +182,9 @@ Page({
           if (app.globalData.goodsType == 4) { //从订阅花过来，弹出属性框,并请求数据
             that.requestNature();
           } else {
+          
             wx.navigateTo({
-              url: '../PayDetail/PayDetailPage',
+              url: '../PayDetail/PayDetailPage?isShop=1',
             })
           }
         } else {
@@ -250,6 +251,7 @@ Page({
 
         for (var i = 0; i < imgLen; i++) {
           imgArr[i] = new Object();
+          console.log('res.data.data.goods_gallery[i].img_url', res.data.data.goods_gallery[i].img_url)
           imgArr[i].img_url = app.globalData.url + "/" + res.data.data.goods_gallery[i].img_url;
         }
 
@@ -267,7 +269,8 @@ Page({
         var price = res.data.data.shop_price.toString();
         var big_text = price.split(".")[0];
         var last_text = price.split(".")[1];
-        if (res.data.data.goods_sku) {
+        console.log('resddddd', res.data.data.goods_sku.row)
+        if (res.data.data.goods_sku.row.length!=0) {
           res.data.data.goods_sku.row.forEach((ele, idx) => {
             if (idx != 0) {
               ele.isActive = false
@@ -277,8 +280,18 @@ Page({
           })
 
           that.setData({
+            orderGoodsPrice: res.data.data.goods_sku.row[0].price.toString(),
             good_sku: res.data.data.goods_sku,
             good_attr: res.data.data.goods_sku.row[0]  //默认将第一个规格作为选中
+          })
+         var sk =  [{
+           "sku_id" : res.data.data.goods_sku.row[0].id,
+           "number" : 1
+         }]
+          app.globalData.skus = JSON.stringify(sk) 
+        }else{
+          that.setData({
+            orderGoodsPrice: res.data.data.shop_price,
           })
         }
         that.setData({
@@ -286,7 +299,7 @@ Page({
           goods_gallery: imgArr,
           goods_name: res.data.data.goods_name,
           goods_brief: res.data.data.goods_brief,
-          orderGoodsPrice: res.data.data.shop_price,
+        
           bigText: big_text,
           lastText: last_text,
           give_integral: res.data.data.give_integral,
@@ -303,6 +316,14 @@ Page({
       }
     })
   },
+
+
+  skus(id, num) //声明对象
+  {
+    this.sku_id = id;
+    this.number = num;
+  },
+
   //选择商品规格
   selectAttr(e) {
     console.log('e.currentTarget.attr', e.currentTarget.dataset)
@@ -316,7 +337,8 @@ Page({
     })
     this.setData({
       good_sku: this.data.good_sku,
-      good_attr: e.currentTarget.dataset.attr
+      good_attr: e.currentTarget.dataset.attr,
+      orderGoodsPrice: e.currentTarget.dataset.attr.price.toString()
     })
   },
 
@@ -568,7 +590,7 @@ Page({
           spikeBigText: spike_big_text,
           spikeLastText: spike_last_text,
           give_integral: res.data.data.give_integral, //商品送的积分
-          shop_price: res.data.data.shop_price, //商品原价
+          shop_price: 2, //商品原价
           rob_number: res.data.data.rob_number, //商品已抢数量
           comment_number: comment_number, //商品评价数量
           haveGoods: res.data.data.is_rob //是否已经抢完

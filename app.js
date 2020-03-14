@@ -6,7 +6,8 @@ App({
   },
   globalData: {
     // url: "https://flower.transtive.com",    //全局的URL
-    url: "http://47.89.15.170:8081",    //全局的URL
+    // url: "http://47.89.15.170:8081",    //全局的URL
+    url: "https://a.com1221.com",    //全局的URL
     // url:"http://www.flower.com",
     uId: wx.getStorageSync('uId') ? wx.getStorageSync('uId'):"",             //记录当前登陆者信息
     globalAddrId: "",     //记录修改或新增地址的id
